@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+Created-By: Baimam Boukar JJ
+Main-Class: com.baimamboukar.java.rms.src.ui.Dashboard
+Class-Path: jars/ class/
+Built-By: baimamboukar
