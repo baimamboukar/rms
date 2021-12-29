@@ -1,4 +1,4 @@
-cd com/baimamboukar/java/rms/src
+cd com/baimamboukar/java/rms/servives
 for file in * 
     do
             git add $file
