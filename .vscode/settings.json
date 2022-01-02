@@ -1,0 +1,19 @@
+{
+  "java.project.referencedLibraries": [
+    "lib/**/*.jar",
+    "com/baimamboukar/java/rms/jars/sqlite-jdbc-3.36.0.3.jar",
+    "com/baimamboukar/java/rms/jars/lanterna-3.2.0-alpha1.jar",
+    "com/baimamboukar/java/rms/jars/activation-1.1.1.jar",
+    "com/baimamboukar/java/rms/jars/javax.mail.jar"
+  ],
+  "sqltools.connections": [
+    {
+      "previewLimit": 50,
+      "driver": "SQLite",
+      "name": "rms",
+      "group": "rms.javaone",
+      "database": "${workspaceFolder:rms}/com/baimamboukar/java/rms/database/rms.sqlite"
+    }
+  ],
+  "sqltools.useNodeRuntime": true
+}
