@@ -3,102 +3,91 @@ package com.baimamboukar.java.rms.src.models;
 import java.util.*;
 import javax.mail.*;
 import javax.mail.internet.*;
-import javax.mail.Session;
-import javax.mail.Transport;
 
 public class Twilio {
-    private String clientID;
-    private String authID;
-    private String senderEmail;
-    private String senderPhone;
 
-    public Twilio(String clientID, String authID, String senderEmail, String senderPhone) {
-        this.clientID = clientID;
-        this.authID = authID;
-        this.senderEmail = senderEmail;
-        this.senderPhone = senderPhone;
+    final String subject;
+
+    public Twilio(String subject, String message, String[] receivers, String sender) {
+        this.subject = subject;
+        this.message = message;
+        this.receivers = receivers;
+        this.sender = sender;
     }
 
-    public void send(String from, String to, String message) {
-        System.out.println("Sending message...");
-    }
+    final String message;
+    final String[] receivers;
+    final String sender;
 
-    public String getClientID() {
-        return clientID;
-    }
+    public static void main(String[] args) {
+        // change accordingly
+        String to = "bsquare.j2@gmail.com";
 
-    public void setClientID(String clientID) {
-        this.clientID = clientID;
-    }
+        // change accordingly
+        String from = "baimamboukar@gmail.com";
 
-    public String getAuthID() {
-        return authID;
-    }
+        // or IP address
+        String host = "smtp.gmail.com";
 
-    public void setAuthID(String authID) {
-        this.authID = authID;
-    }
+        // mail id
+        final String username = "baimamboukar@gmail.com";
 
-    public String getSenderEmail() {
-        return senderEmail;
-    }
+        // correct password for gmail id
+        final String password = "xlmimrnsitabgazm";
 
-    public void setSenderEmail(String senderEmail) {
-        this.senderEmail = senderEmail;
-    }
+        System.out.println("TLSEmail Start");
+        // Get the session object
 
-    public String getSenderPhone() {
-        return senderPhone;
-    }
-
-    public void setSenderPhone(String senderPhone) {
-        this.senderPhone = senderPhone;
-    }
-
-    @Override
-    public String toString() {
-        return "Twilio [authID=" + authID + ", clientID=" + clientID + ", senderEmail=" + senderEmail + ", senderPhone="
-                + senderPhone + "]";
-    }
-
-    public static void sendMail() {
-        // email ID of Recipient.
-        String recipient = "baimamboukar@gmail.com";
-
-        // email ID of Sender.
-        String sender = "bsquare.j2@gmail.com";
-
-        // using host as localhost
-        String host = "127.0.0.1";
-
-        // Getting system properties
+        // Get system properties
         Properties properties = System.getProperties();
 
-        // Setting up mail server
+        // Setup mail server
         properties.setProperty("mail.smtp.host", host);
 
-        // creating session object to get properties
-        Session session = Session.getDefaultInstance(properties);
+        // SSL Port
+        properties.put("mail.smtp.port", "465");
 
-        try {
-            // MimeMessage object.
+        // enable authentication
+        properties.put("mail.smtp.auth", "true");
+
+        // SSL Factory
+        properties.put("mail.smtp.socketFactory.class",
+                "javax.net.ssl.SSLSocketFactory");
+
+        // creating Session instance referenced to
+        // Authenticator object to pass in
+        // Session.getInstance argument
+        Session session = Session.getDefaultInstance(properties,
+                new javax.mail.Authenticator() {
+
+                    // override the getPasswordAuthentication
+                    // method
+                    protected PasswordAuthentication getPasswordAuthentication() {
+                        return new PasswordAuthentication(username, password);
+
+                    }
+                });
+
+        // compose the message
+        try
+
+        {
+            // javax.mail.internet.MimeMessage class is mostly
+            // used for abstraction.
             MimeMessage message = new MimeMessage(session);
 
-            // Set From Field: adding senders email to from field.
-            message.setFrom(new InternetAddress(sender));
+            // header field of the header.
+            message.setFrom(new InternetAddress(from));
 
-            // Set To Field: adding recipient's email to from field.
-            message.addRecipient(Message.RecipientType.TO, new InternetAddress(recipient));
+            message.addRecipient(Message.RecipientType.TO,
+                    new InternetAddress(to));
 
-            // Set Subject: subject of the email
-            message.setSubject("This is Subject");
+            message.setSubject("subject");
+            message.setText("Hello, aas is sending email ");
 
-            // set body of the email.
-            message.setText("This is a test mail");
-
-            // Send email.
+            // Send message
             Transport.send(message);
-            System.out.println("Mail successfully sent");
+            System.out.println("Yo it has been sent..");
         } catch (MessagingException mex) {
             mex.printStackTrace();
         }
