@@ -127,12 +127,13 @@ public class ResultGUI {
                                 Result result = new Result(now.toString(), courses.getSelectedItem(), "2",
                                                 descBox.getText(),
                                                 input != null ? input.getAbsolutePath() : "No file");
-                                // Database.insertResult(
-                                // "INSERT INTO results VALUES(" + result.getpublicationDate() + "," +
-                                // result.getCourseId()
-                                // + "," + result.getPublisherId() + "," + result.getDescription() + ","
-                                // + result.getResultsFile()
-                                // + ");");
+                                Database.insertResult(
+                                                "INSERT INTO results VALUES(" + result.getpublicationDate() + "," +
+                                                                result.getCourseId()
+                                                                + "," + result.getPublisherId() + ","
+                                                                + result.getDescription() + ","
+                                                                + result.getResultsFile()
+                                                                + ")");
                                 String message = "The result will be published and each concerned student will be notified \n [WE ARE STILL COOKING THIS FEAUTRE]";
                                 if (result.getResultsFile() != "No file") {
                                         MessageDialog.showMessageDialog(gui, "Success",
