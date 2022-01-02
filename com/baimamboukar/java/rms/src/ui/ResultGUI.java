@@ -62,7 +62,7 @@ public class ResultGUI {
                 contentPanel.addComponent(descBox)
                                 .withBorder(Borders.singleLine("Brief description"));
                 contentPanel.addComponent(new Label("clikc to Upload the file"));
-                contentPanel.addComponent(new Button("Pick file", new Runnable() {
+                contentPanel.addComponent(new Button("Upload file", new Runnable() {
                         @Override
                         public void run() {
                                 // Twilio.sendMail();
@@ -71,7 +71,6 @@ public class ResultGUI {
                                                 .setDescription("Choose a file")
                                                 .setActionLabel("Open")
                                                 .build()
-
                                                 .showDialog(gui);
                                 if (input == null) {
                                         MessageDialog.showMessageDialog(gui, "ERROR",
@@ -114,13 +113,13 @@ public class ResultGUI {
                                 // }
 
                         }
-                }).withBorder(Borders.doubleLine("*csv only*")));
+                }).withBorder(Borders.doubleLine("--csv only--")));
                 contentPanel.addComponent(
                                 new Separator(Direction.HORIZONTAL)
                                                 .setLayoutData(
                                                                 GridLayout.createHorizontallyFilledLayoutData(
                                                                                 2)));
-                contentPanel.addComponent(new Button("Publish", new Runnable() {
+                contentPanel.addComponent(new Button("Publish result", new Runnable() {
                         @Override
                         public void run() {
                                 LocalDateTime now = LocalDateTime.now();
