@@ -6,12 +6,16 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import com.baimamboukar.java.rms.src.database.Database;
 import com.baimamboukar.java.rms.src.models.Course;
+import com.baimamboukar.java.rms.src.models.PDFBox;
 import com.baimamboukar.java.rms.src.models.Result;
+import com.baimamboukar.java.rms.src.models.Student;
+import com.baimamboukar.java.rms.src.models.Twilio;
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.gui2.Borders;
 import com.googlecode.lanterna.gui2.Button;
@@ -91,27 +95,6 @@ public class ResultGUI {
                                         }
                                 }
 
-                                // List<List<String>> records = new ArrayList<>();
-
-                                // try (Scanner scanner = new Scanner(new File(input.getAbsolutePath()));) {
-                                // while (scanner.hasNextLine()) {
-                                // List<String> values = new ArrayList<String>();
-                                // try (Scanner rowScanner = new Scanner(scanner.nextLine())) {
-                                // rowScanner.useDelimiter(",");
-                                // while (rowScanner.hasNext()) {
-                                // values.add(rowScanner.next());
-                                // }
-                                // }
-                                // records.add(values);
-                                // }
-                                // records.forEach((record) -> {
-                                // System.out.println(record.toString());
-                                // });
-
-                                // } catch (Exception e) {
-                                // System.out.println("Not found");
-                                // }
-
                         }
                 }).withBorder(Borders.doubleLine("--csv only--")));
                 contentPanel.addComponent(
@@ -122,20 +105,31 @@ public class ResultGUI {
                 contentPanel.addComponent(new Button("Publish result", new Runnable() {
                         @Override
                         public void run() {
+                                List<Student> students = Database.getStudents("SELECT * FROM students");
+                                List<String> studentsEmail = new ArrayList<String>();
+                                students.forEach((Student student) -> {
+                                        studentsEmail.add(student.getEmail());
+                                });
                                 LocalDateTime now = LocalDateTime.now();
+                                String fileName = input.getAbsolutePath();
+                                String title = "FALL 2021 RESULTS | THE ICT UNIVERSITY \n " + courses.getSelectedItem();
 
+                                PDFBox pdf = new PDFBox(fileName, "rms_result.pdf", descBox.getText(), title);
+                                String generated = pdf.getGeneratedPDF();
                                 Result result = new Result(now.toString(), courses.getSelectedItem(), "2",
                                                 descBox.getText(),
-                                                input != null ? input.getAbsolutePath() : "No file");
-                                Database.insertResult(
-                                                "INSERT INTO results VALUES(" + result.getpublicationDate() + "," +
-                                                                result.getCourseId()
-                                                                + "," + result.getPublisherId() + ","
-                                                                + result.getDescription() + ","
-                                                                + result.getResultsFile()
-                                                                + ")");
-                                String message = "The result will be published and each concerned student will be notified \n [WE ARE STILL COOKING THIS FEAUTRE]";
+                                                generated != null ? generated : "No file");
+                                Database.resultInsert(result.getpublicationDate(), result.getCourseId(),
+                                                result.getPublisherId(), result.getDescription(),
+                                                result.getResultsFile());
+                                String message = "Emails successfully delivered to students.....";
                                 if (result.getResultsFile() != "No file") {
+
+                                        String subject = "RMS ⚝ FALL 2021 ⚝ " + courses.getSelectedItem();
+                                        new Twilio(subject, descBox.getText(),
+
+                                                        studentsEmail, new File(generated));
+
                                         MessageDialog.showMessageDialog(gui, "Success",
                                                         message, MessageDialogButton.OK);
                                 }
