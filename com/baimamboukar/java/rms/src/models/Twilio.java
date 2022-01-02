@@ -19,7 +19,7 @@ public class Twilio {
     final String[] receivers;
     final String sender;
 
-    public static void main(String[] args) {
+    public static Boolean main(String[] args) {
         // change accordingly
         String to = "bsquare.j2@gmail.com";
 
@@ -91,5 +91,7 @@ public class Twilio {
         } catch (MessagingException mex) {
             mex.printStackTrace();
         }
+        return true;
     }
+
 }
