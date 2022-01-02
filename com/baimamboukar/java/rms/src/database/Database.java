@@ -2,6 +2,7 @@ package com.baimamboukar.java.rms.src.database;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -149,4 +150,19 @@ public class Database {
         return count;
     }
 
+    public static void resultInsert(String date, String course, String publisher, String desc, String file) {
+        String sql = "INSERT INTO results(publicationDate, course, publisher, desc, file) VALUES(?, ?, ?, ?, ?)";
+
+        try (Connection conn = connect();
+                PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, date);
+            pstmt.setString(2, course);
+            pstmt.setString(3, publisher);
+            pstmt.setString(4, desc);
+            pstmt.setString(5, file);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
 }
