@@ -1,28 +1,24 @@
 package com.baimamboukar.java.rms.src.models;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.*;
+
 import javax.mail.*;
 import javax.mail.internet.*;
 
 public class Twilio {
 
     final String subject;
+    final String content;
+    final File attachment;
+    final List<String> receivers;
 
-    public Twilio(String subject, String message, String[] receivers, String sender) {
+    public Twilio(String subject, String content, List<String> receivers, File attachment) {
         this.subject = subject;
-        this.message = message;
+        this.content = content;
         this.receivers = receivers;
-        this.sender = sender;
-    }
-
-    final String message;
-    final String[] receivers;
-    final String sender;
-
-    public static Boolean main(String[] args) {
-        // change accordingly
-        String to = "bsquare.j2@gmail.com";
-
+        this.attachment = attachment;
         // change accordingly
         String from = "baimamboukar@gmail.com";
 
@@ -38,7 +34,7 @@ public class Twilio {
         System.out.println("TLSEmail Start");
         // Get the session object
 
-        // Get system properties
+        // Get system properties//
         Properties properties = System.getProperties();
 
         // Setup mail server
@@ -72,26 +68,62 @@ public class Twilio {
         try
 
         {
-            // javax.mail.internet.MimeMessage class is mostly
-            // used for abstraction.
-            MimeMessage message = new MimeMessage(session);
+            // // javax.mail.internet.MimeMessage class is mostly
+            // // used for abstraction.
+            // MimeMessage message = new MimeMessage(session);
 
-            // header field of the header.
+            // // header field of the header.
+            // message.setFrom(new InternetAddress(from));
+
+            // for (String email : receivers) {
+            // message.addRecipient(Message.RecipientType.TO,
+            // new InternetAddress(email));
+            // }
+            // MimeBodyPart attachmentBodyPart = new MimeBodyPart();
+            // DataSource source = new FileDataSource(attachment);
+            // attachmentBodyPart.setDataHandler(new DataHandler(source));
+            // attachmentBodyPart.setFileName(attachment);
+
+            // message.setSubject(subject);
+            // message.setText(content);
+            // message.
+
+            // // Send message
+            // Transport.send(message);
+
+            Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress(from));
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress("baimamboukar@gmail.com"));
+            receivers.forEach((String email) -> {
+                try {
+                    message.addRecipient(Message.RecipientType.TO, new InternetAddress(email));
+                } catch (AddressException e) {
+                    e.printStackTrace();
+                } catch (MessagingException e) {
+                    e.printStackTrace();
+                }
 
-            message.addRecipient(Message.RecipientType.TO,
-                    new InternetAddress(to));
+            });
+            message.setSubject(subject);
 
-            message.setSubject("subject");
-            message.setText("Hello, aas is sending email ");
-
-            // Send message
+            BodyPart messageBodyPart = new MimeBodyPart();
+            messageBodyPart.setText(content);
+            MimeBodyPart attachmentPart = new MimeBodyPart();
+            try {
+                attachmentPart.attachFile(attachment);
+            } catch (IOException e) {
+                e.printStackTrace();
+                System.out.println("File not found");
+            }
+            Multipart multipart = new MimeMultipart();
+            multipart.addBodyPart(messageBodyPart);
+            multipart.addBodyPart(attachmentPart);
+            message.setContent(multipart);
             Transport.send(message);
-            System.out.println("Yo it has been sent..");
+            System.out.println("Emails delivered successfully...");
         } catch (MessagingException mex) {
             mex.printStackTrace();
         }
-        return true;
     }
 
 }
