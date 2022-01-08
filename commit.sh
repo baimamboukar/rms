@@ -1,8 +1,8 @@
-cd com/baimamboukar/java/rms/models
-ls
+# cd com/baimamboukar/java/rms
+# ls
 for file in * 
     do
             git add $file
-            git commit -m "done with $file"
+            git commit -m "added $file"
             git push
     done
