@@ -113,8 +113,8 @@ public class ResultGUI {
                                 LocalDateTime now = LocalDateTime.now();
                                 String fileName = input.getAbsolutePath();
                                 String title = "FALL 2021 RESULTS | THE ICT UNIVERSITY \n " + courses.getSelectedItem();
-
-                                PDFBox pdf = new PDFBox(fileName, "rms_result.pdf", descBox.getText(), title);
+                                String pdfFile = "rms_" + courses.getSelectedItem() + "_results.pdf";
+                                PDFBox pdf = new PDFBox(fileName, pdfFile, descBox.getText(), title);
                                 String generated = pdf.getGeneratedPDF();
                                 Result result = new Result(now.toString(), courses.getSelectedItem(), "2",
                                                 descBox.getText(),
