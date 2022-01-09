@@ -153,10 +153,9 @@ public class Dashboard {
                                                                         .setLayoutData(GridLayout.createLayoutData(
                                                                                         GridLayout.Alignment.CENTER,
                                                                                         GridLayout.Alignment.CENTER)));
-                        contentPanel.addComponent(new Button(" Course ",
-                                        () -> MessageDialog.showMessageDialog(textGUI, "MessageBox",
-                                                        "We are still cooking this feature ! ☄☄☄☄☄",
-                                                        MessageDialogButton.OK))
+                        contentPanel.addComponent(new Button(" result ",
+                                        () -> window.setComponent(
+                                                        ResultGUI.deleteResult(contentPanel, window, textGUI)))
                                                                         .withBorder(Borders.singleLine("◂◂delete▸▸"))
                                                                         .setSize(new TerminalSize(8, 4))
                                                                         .setLayoutData(GridLayout.createLayoutData(

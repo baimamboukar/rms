@@ -16,11 +16,14 @@ import com.baimamboukar.java.rms.src.models.PDFBox;
 import com.baimamboukar.java.rms.src.models.Result;
 import com.baimamboukar.java.rms.src.models.Student;
 import com.baimamboukar.java.rms.src.models.Twilio;
+import com.googlecode.lanterna.SGR;
 import com.googlecode.lanterna.TerminalSize;
+import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.gui2.Borders;
 import com.googlecode.lanterna.gui2.Button;
 import com.googlecode.lanterna.gui2.ComboBox;
 import com.googlecode.lanterna.gui2.Direction;
+import com.googlecode.lanterna.gui2.EmptySpace;
 import com.googlecode.lanterna.gui2.GridLayout;
 import com.googlecode.lanterna.gui2.Label;
 import com.googlecode.lanterna.gui2.Panel;
@@ -148,6 +151,7 @@ public class ResultGUI {
 
         public static Panel displayResults(Panel back, Window window, WindowBasedTextGUI gui) {
                 Panel contentPanel = new Panel(new GridLayout(4));
+
                 GridLayout gridLayout = (GridLayout) contentPanel.getLayoutManager();
                 gridLayout.setHorizontalSpacing(2);
                 contentPanel.addComponent(
@@ -155,24 +159,141 @@ public class ResultGUI {
                                                 .setLayoutData(
                                                                 GridLayout.createHorizontallyFilledLayoutData(
                                                                                 4)));
+                contentPanel.addComponent(
+                                new Label("AVG OF A: "
+                                                + Database.getAVG("SELECT AVG(bcount) as median FROM resultsdata"))
+                                                                .setLayoutData(
+                                                                                GridLayout.createHorizontallyFilledLayoutData(
+                                                                                                4)));
+
+                /**
+                 * STATISTICS BUTTONS
+                 */
+                contentPanel.addComponent(
+                                new EmptySpace()
+
+                                                .setLayoutData(
+                                                                GridLayout.createHorizontallyFilledLayoutData(
+                                                                                4)));
+
+                contentPanel.addComponent(new Button(" MODE: B+ ")
+                                .setEnabled(false)
+                                .withBorder(Borders.singleLine("⤴⤴⤴⤴⤴")));
+                contentPanel.addComponent(new Button(" MEAN: C ").setEnabled(false)
+                                .withBorder(Borders.singleLine("♨⥄⥄⥄♨")));
+                contentPanel.addComponent(new Button(" MEDIAN: D ")
+                                .setEnabled(false)
+                                .withBorder(Borders.singleLine("⅀≞≞≞⅀")));
+                contentPanel.addComponent(new Button(" STDEV: 0.7 ")
+                                .setEnabled(false)
+                                .withBorder(Borders
+                                                .singleLine("∂∂≜≜≜∂∂")));
                 Table<String> table = new Table<>("Date", "Course", "Description", "File");
+                table.withBorder(Borders.doubleLine("."));
 
                 List<Result> courses = Database.getResults("SELECT * FROM results");
                 table.setLayoutData(GridLayout.createHorizontallyFilledLayoutData(4));
                 if (courses != null) {
                         for (Result result : courses) {
-                                table.getTableModel().addRow(result.getpublicationDate(), result.getCourseId(),
-                                                result.getDescription(),
-                                                result.getResultsFile());
+                                table.getTableModel().addRow(result.getpublicationDate().substring(0, 10) + " ⤻ ",
+                                                result.getCourseId().substring(0, 8) + "   ",
+                                                result.getDescription().substring(0, 8) + "... ⤻ ",
+                                                result.getResultsFile().substring(0, 8));
                         }
                 }
                 table.setSelectAction(() -> {
+                        String delete = "DELETE FROM results WHERE publicationDate = "
+                                        + courses.get(table.getSelectedRow()).getpublicationDate();
 
-                        MessageDialog.showMessageDialog(gui, "Course Information",
-                                        "CourseID: ICT 1112 \n" +
-                                                        "TeacherID: 3\n" +
+                        MessageDialog.showMessageDialog(gui, "Results description",
+                                        "Date: ICT 1112 \n" +
+                                                        "Desc: 3\n" +
                                                         "Course: Research Methods\n",
                                         MessageDialogButton.Close);
+                });
+
+                table.setLayoutData(GridLayout.createHorizontallyFilledLayoutData(
+                                4));
+                contentPanel.addComponent(table);
+                contentPanel.addComponent(
+                                new Separator(Direction.HORIZONTAL)
+                                                .setLayoutData(
+                                                                GridLayout.createHorizontallyFilledLayoutData(
+                                                                                4)));
+                contentPanel.addComponent(
+                                new Button("Back", () -> {
+                                        window.setComponent(back);
+                                })
+                                                .setLayoutData(
+                                                                GridLayout.createHorizontallyFilledLayoutData(
+                                                                                4)));
+
+                return contentPanel;
+        }
+
+        public static Panel deleteResult(Panel back, Window window, WindowBasedTextGUI gui) {
+                Panel contentPanel = new Panel(new GridLayout(4));
+                int mean = Database.getTotalAVG();
+
+                GridLayout gridLayout = (GridLayout) contentPanel.getLayoutManager();
+                gridLayout.setHorizontalSpacing(2);
+                contentPanel.addComponent(
+                                new Separator(Direction.HORIZONTAL)
+                                                .setLayoutData(
+                                                                GridLayout.createHorizontallyFilledLayoutData(
+                                                                                4)));
+                contentPanel.addComponent(
+                                new Label("AVG OF A: "
+                                                + Database.getAVG("SELECT AVG(bcount) as median FROM resultsdata"))
+                                                                .setLayoutData(
+                                                                                GridLayout.createHorizontallyFilledLayoutData(
+                                                                                                4)));
+
+                /**
+                 * STATISTICS BUTTONS
+                 */
+                contentPanel.addComponent(
+                                new EmptySpace()
+
+                                                .setLayoutData(
+                                                                GridLayout.createHorizontallyFilledLayoutData(
+                                                                                4)));
+
+                contentPanel.addComponent(new Button(" MODE: B+ ")
+                                .setEnabled(false)
+                                .withBorder(Borders.singleLine("⤴⤴⤴⤴⤴")));
+                contentPanel.addComponent(new Button(" MEAN: " + mean + " ").setEnabled(false)
+                                .withBorder(Borders.singleLine("♨⥄⥄⥄♨")));
+                contentPanel.addComponent(new Button(" MEDIAN: D ")
+                                .setEnabled(false)
+                                .withBorder(Borders.singleLine("⅀≞≞≞⅀")));
+                contentPanel.addComponent(new Button(" STDEV: 0.7 ")
+                                .setEnabled(false)
+                                .withBorder(Borders
+                                                .singleLine("∂∂≜≜≜∂∂")));
+                contentPanel.addComponent(new Label("CLICK THE RESULT YOU WANT TO DELETE")
+                                .setForegroundColor(TextColor.ANSI.CYAN));
+                Table<String> table = new Table<>("Date", "Course", "Description", "File");
+                table.withBorder(Borders.doubleLine("."));
+
+                List<Result> courses = Database.getResults("SELECT * FROM results");
+                table.setLayoutData(GridLayout.createHorizontallyFilledLayoutData(4));
+                if (courses != null) {
+                        for (Result result : courses) {
+                                table.getTableModel().addRow(result.getpublicationDate().substring(0, 10) + " ⤻ ",
+                                                result.getCourseId().substring(0, 8) + "   ",
+                                                result.getDescription().substring(0, 8) + "... ⤻ ",
+                                                result.getResultsFile().substring(0, 8));
+                        }
+                }
+
+                table.setSelectAction(() -> {
+                        Database.deleteResult(courses.get(table.getSelectedRow()).getpublicationDate());
+
+                        MessageDialog.showMessageDialog(gui, "Result Deletion",
+                                        "Deleted successfuly",
+                                        MessageDialogButton.Close);
+                        window.setComponent(back);
                 });
 
                 table.setLayoutData(GridLayout.createHorizontallyFilledLayoutData(

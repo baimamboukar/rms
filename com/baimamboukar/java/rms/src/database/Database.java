@@ -12,6 +12,7 @@ import java.util.List;
 
 import com.baimamboukar.java.rms.src.models.Course;
 import com.baimamboukar.java.rms.src.models.Result;
+import com.baimamboukar.java.rms.src.models.ResultData;
 import com.baimamboukar.java.rms.src.models.Student;
 import com.baimamboukar.java.rms.src.models.Teacher;
 
@@ -165,4 +166,99 @@ public class Database {
         }
         return list;
     }
+
+    public static List<ResultData> getResultsData(String query) {
+        List<ResultData> list = new ArrayList<ResultData>();
+        try {
+            Connection conn = connect();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            // loop through the result set
+            while (rs.next()) {
+                ResultData resultData = new ResultData(rs.getString("acount"), rs.getString("bcount"),
+                        rs.getString("ccount"), rs.getString("dcount"), rs.getString("fcount"),
+                        rs.getString("bpluscount"), rs.getString("cpluscount"), rs.getString("dpluscount"));
+                list.add(resultData);
+            }
+
+            int avg = ((getAVG("SELECT AVG(acount) FROM resultsdata") * 100)
+                    + (getAVG("SELECT AVG(bpluscount) FROM resultsdata") * 90)
+                    + (getAVG("SELECT AVG(bcount) FROM resultsdata") * 85)
+                    + (getAVG("SELECT AVG(cpluscount) FROM resultsdata") * 80)
+                    + (getAVG("SELECT AVG(ccount) FROM resultsdata") * 75)
+                    + (getAVG("SELECT AVG(dpluscount) FROM resultsdata") * 70)
+                    + (getAVG("SELECT AVG(dcount) FROM resultsdata") * 65)
+                    + (getAVG("SELECT AVG(fcount) FROM resultsdata") * 60)) / 100;
+
+            System.out.println(avg);
+            return list;
+        } catch (SQLException e) {
+            System.out.println("ERROR: " + e.getMessage());
+
+        }
+        return list;
+    }
+
+    public static void deleteResult(String date) {
+        String sql = "DELETE FROM results WHERE publicationDate = ?";
+
+        try {
+            Connection conn = connect();
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            // set the corresponding param
+            pstmt.setString(1, date);
+            // execute the delete statement
+            pstmt.executeUpdate();
+            conn.close();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    /** STATISTICAL ANALYSIS FROM THE DATABASE */
+    public static int getAVG(String query) {
+        int avg = 0;
+        try {
+            Connection conn = connect();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()) {
+                avg = (rs.getInt("average"));
+            }
+            return avg;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return avg;
+    }
+
+    public static int getMode(String query, String countQuery) {
+        int avg = 0;
+        try {
+            Connection conn = connect();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()) {
+                avg = (rs.getInt("mode"));
+            }
+            return avg;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return avg / getCount(countQuery);
+    }
+
+    public static int getTotalAVG() {
+        int avg = ((getAVG("SELECT AVG(acount) FROM resultsdata as average") * 100)
+                + (getAVG("SELECT AVG(bpluscount) FROM resultsdata as average") * 90)
+                + (getAVG("SELECT AVG(bcount) FROM resultsdata as average") * 85)
+                + (getAVG("SELECT AVG(cpluscount) FROM resultsdata as average") * 80)
+                + (getAVG("SELECT AVG(ccount) FROM resultsdata as average") * 75)
+                + (getAVG("SELECT AVG(dpluscount) FROM resultsdata as average") * 70)
+                + (getAVG("SELECT AVG(dcount) FROM resultsdata as average") * 65)
+                + (getAVG("SELECT AVG(fcount) FROM resultsdata as average") * 60)) / 100;
+        return avg;
+    }
+
 }
