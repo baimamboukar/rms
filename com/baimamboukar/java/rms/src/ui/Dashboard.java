@@ -27,8 +27,6 @@ import com.googlecode.lanterna.gui2.dialogs.MessageDialogButton;
 import com.googlecode.lanterna.screen.Screen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 
-import org.w3c.dom.Text;
-
 public class Dashboard {
         static Panel contentPanel;
         static int studentsCount = Database.getCount("SELECT COUNT(*) as count FROM students");
@@ -161,51 +159,31 @@ public class Dashboard {
                                                                         .setLayoutData(GridLayout.createLayoutData(
                                                                                         GridLayout.Alignment.CENTER,
                                                                                         GridLayout.Alignment.CENTER)));
-
+                        String mean = Database.getTotalAVG();
+                        String mode = Database.getMode();
+                        String stdev = Database.getStandardDev();
                         /**
                          * STATISTICS BUTTONS
                          */
-
-                        contentPanel.addComponent(
-                                        new EmptySpace(TextColor.ANSI.BLACK)
-
-                                                        .setLayoutData(
-                                                                        GridLayout.createHorizontallyFilledLayoutData(
-                                                                                        4)));
                         contentPanel.addComponent(
                                         new EmptySpace()
 
                                                         .setLayoutData(
                                                                         GridLayout.createHorizontallyFilledLayoutData(
                                                                                         4)));
-                        contentPanel.addComponent(
-                                        new Label("፤፤፤፤ STATISTICAL ANALYSIS ፤፤፤፤").addStyle(SGR.ITALIC)
-                                                        .setLabelWidth(100)
-                                                        .setForegroundColor(TextColor.ANSI.CYAN)
-                                                        .setLayoutData(
-                                                                        GridLayout.createHorizontallyFilledLayoutData(
-                                                                                        4)));
 
-                        contentPanel.addComponent(new Button(" MODE ☄ ",
-                                        () -> window.setComponent(
-                                                        StudentGUI.displayStudents(contentPanel, window, textGUI)))
-                                                                        .withBorder(Borders.singleLine("⤴⤴⤴⤴⤴")));
-                        contentPanel.addComponent(new Button(" MEAN ☄ ",
-                                        () -> window.setComponent(
-                                                        TeacherGUI.displayteachers(contentPanel, window, textGUI)))
-                                                                        .withBorder(Borders.singleLine("♨⥄⥄⥄♨")));
-                        contentPanel.addComponent(new Button(" MEDIAN ☄ ",
-                                        () -> window.setComponent(
-                                                        ResultGUI.displayResults(contentPanel, window, textGUI)))
-                                                                        .withBorder(Borders.singleLine("⅀≞≞≞⅀")));
-                        contentPanel.addComponent(new Button(" STDEV ☄ ",
-                                        () -> window.setComponent(
-                                                        CourseGUI.displayCourses(contentPanel, window, textGUI)))
-                                                                        .setLayoutData(GridLayout.createLayoutData(
-                                                                                        GridLayout.Alignment.CENTER,
-                                                                                        GridLayout.Alignment.CENTER))
-                                                                        .withBorder(Borders
-                                                                                        .singleLine("∂∂≜≜≜∂∂")));
+                        contentPanel.addComponent(new Button(" MODE: " + mode + " ")
+                                        .setEnabled(false)
+                                        .withBorder(Borders.singleLine("⤴⤴⤴⤴⤴")));
+                        contentPanel.addComponent(new Button(" MEAN: " + mean + " ").setEnabled(false)
+                                        .withBorder(Borders.singleLine("♨⥄⥄⥄♨")));
+                        contentPanel.addComponent(new Button(" MEDIAN: D ")
+                                        .setEnabled(false)
+                                        .withBorder(Borders.singleLine("⅀≞≞≞⅀")));
+                        contentPanel.addComponent(new Button(" STDEV: " + stdev + " ")
+                                        .setEnabled(false)
+                                        .withBorder(Borders
+                                                        .singleLine("∂∂≜≜≜∂∂")));
 
                         /** ACTION BUTTONS FOR DISPLAY */
                         contentPanel.addComponent(

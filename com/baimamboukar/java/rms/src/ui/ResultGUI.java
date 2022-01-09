@@ -161,11 +161,13 @@ public class ResultGUI {
                                                                                 4)));
                 contentPanel.addComponent(
                                 new Label("AVG OF A: "
-                                                + Database.getAVG("SELECT AVG(bcount) as median FROM resultsdata"))
+                                                + Database.getAVG("SELECT AVG(acount) as average FROM resultsdata"))
                                                                 .setLayoutData(
                                                                                 GridLayout.createHorizontallyFilledLayoutData(
                                                                                                 4)));
-
+                String mean = Database.getTotalAVG();
+                String mode = Database.getMode();
+                String stdev = Database.getStandardDev();
                 /**
                  * STATISTICS BUTTONS
                  */
@@ -176,15 +178,15 @@ public class ResultGUI {
                                                                 GridLayout.createHorizontallyFilledLayoutData(
                                                                                 4)));
 
-                contentPanel.addComponent(new Button(" MODE: B+ ")
+                contentPanel.addComponent(new Button(" MODE: " + mode + " ")
                                 .setEnabled(false)
                                 .withBorder(Borders.singleLine("⤴⤴⤴⤴⤴")));
-                contentPanel.addComponent(new Button(" MEAN: C ").setEnabled(false)
+                contentPanel.addComponent(new Button(" MEAN: " + mean + " ").setEnabled(false)
                                 .withBorder(Borders.singleLine("♨⥄⥄⥄♨")));
                 contentPanel.addComponent(new Button(" MEDIAN: D ")
                                 .setEnabled(false)
                                 .withBorder(Borders.singleLine("⅀≞≞≞⅀")));
-                contentPanel.addComponent(new Button(" STDEV: 0.7 ")
+                contentPanel.addComponent(new Button(" STDEV: " + stdev + " ")
                                 .setEnabled(false)
                                 .withBorder(Borders
                                                 .singleLine("∂∂≜≜≜∂∂")));
@@ -202,9 +204,6 @@ public class ResultGUI {
                         }
                 }
                 table.setSelectAction(() -> {
-                        String delete = "DELETE FROM results WHERE publicationDate = "
-                                        + courses.get(table.getSelectedRow()).getpublicationDate();
-
                         MessageDialog.showMessageDialog(gui, "Results description",
                                         "Date: ICT 1112 \n" +
                                                         "Desc: 3\n" +
@@ -233,7 +232,7 @@ public class ResultGUI {
 
         public static Panel deleteResult(Panel back, Window window, WindowBasedTextGUI gui) {
                 Panel contentPanel = new Panel(new GridLayout(4));
-                int mean = Database.getTotalAVG();
+                String mean = Database.getTotalAVG();
 
                 GridLayout gridLayout = (GridLayout) contentPanel.getLayoutManager();
                 gridLayout.setHorizontalSpacing(2);
@@ -242,12 +241,6 @@ public class ResultGUI {
                                                 .setLayoutData(
                                                                 GridLayout.createHorizontallyFilledLayoutData(
                                                                                 4)));
-                contentPanel.addComponent(
-                                new Label("AVG OF A: "
-                                                + Database.getAVG("SELECT AVG(bcount) as median FROM resultsdata"))
-                                                                .setLayoutData(
-                                                                                GridLayout.createHorizontallyFilledLayoutData(
-                                                                                                4)));
 
                 /**
                  * STATISTICS BUTTONS
@@ -258,7 +251,10 @@ public class ResultGUI {
                                                 .setLayoutData(
                                                                 GridLayout.createHorizontallyFilledLayoutData(
                                                                                 4)));
-
+                contentPanel.addComponent(new Label("CLICK THE RESULT YOU WANT TO DELETE")
+                                .setForegroundColor(TextColor.ANSI.CYAN).setLayoutData(
+                                                GridLayout.createHorizontallyFilledLayoutData(
+                                                                4)));
                 contentPanel.addComponent(new Button(" MODE: B+ ")
                                 .setEnabled(false)
                                 .withBorder(Borders.singleLine("⤴⤴⤴⤴⤴")));
@@ -271,8 +267,8 @@ public class ResultGUI {
                                 .setEnabled(false)
                                 .withBorder(Borders
                                                 .singleLine("∂∂≜≜≜∂∂")));
-                contentPanel.addComponent(new Label("CLICK THE RESULT YOU WANT TO DELETE")
-                                .setForegroundColor(TextColor.ANSI.CYAN));
+
+                ;
                 Table<String> table = new Table<>("Date", "Course", "Description", "File");
                 table.withBorder(Borders.doubleLine("."));
 
