@@ -11,6 +11,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import com.baimamboukar.java.rms.src.models.Course;
+import com.baimamboukar.java.rms.src.models.Result;
 import com.baimamboukar.java.rms.src.models.Student;
 import com.baimamboukar.java.rms.src.models.Teacher;
 
@@ -36,27 +37,6 @@ public class Database {
             return connexion;
         }
     }
-
-    // public static boolean insert(String query) {
-
-    // try {
-    // Connection sqlite = connect();
-    // Statement stmt = sqlite.createStatement();
-    // boolean response = stmt.execute(query);
-    // if (response == true) {
-    // System.out.println("Success");
-    // return true;
-    // } else {
-    // System.out.println("Error");
-    // return false;
-    // }
-    // } catch (SQLException e) {
-
-    // System.out.println(e.getMessage());
-    // return false;
-    // }
-
-    // }
 
     public static boolean insertResult(String query) {
 
@@ -164,5 +144,25 @@ public class Database {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    public static List<Result> getResults(String query) {
+        List<Result> list = new ArrayList<Result>();
+        try {
+            Connection conn = connect();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            // loop through the result set
+            while (rs.next()) {
+                Result result = new Result(rs.getString("publicationDate"), rs.getString("course"),
+                        rs.getString("publisher"), rs.getString("desc"), rs.getString("file"));
+                list.add(result);
+            }
+            return list;
+        } catch (SQLException e) {
+            System.out.println("ERROR: " + e.getMessage());
+
+        }
+        return list;
     }
 }

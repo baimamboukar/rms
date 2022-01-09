@@ -146,7 +146,7 @@ public class ResultGUI {
                 return contentPanel;
         }
 
-        public static Panel displayStudents(Panel back, Window window, WindowBasedTextGUI gui) {
+        public static Panel displayResults(Panel back, Window window, WindowBasedTextGUI gui) {
                 Panel contentPanel = new Panel(new GridLayout(4));
                 GridLayout gridLayout = (GridLayout) contentPanel.getLayoutManager();
                 gridLayout.setHorizontalSpacing(2);
@@ -155,14 +155,15 @@ public class ResultGUI {
                                                 .setLayoutData(
                                                                 GridLayout.createHorizontallyFilledLayoutData(
                                                                                 4)));
-                Table<String> table = new Table<>("CourseID", "TeacherID", "CourseName");
+                Table<String> table = new Table<>("Date", "Course", "Description", "File");
 
-                List<Course> courses = Database.getCourses("SELECT * FROM courses");
+                List<Result> courses = Database.getResults("SELECT * FROM results");
                 table.setLayoutData(GridLayout.createHorizontallyFilledLayoutData(4));
                 if (courses != null) {
-                        for (Course course : courses) {
-                                table.getTableModel().addRow(course.getCourseID(), course.getTeacherID(),
-                                                course.getCourseName());
+                        for (Result result : courses) {
+                                table.getTableModel().addRow(result.getpublicationDate(), result.getCourseId(),
+                                                result.getDescription(),
+                                                result.getResultsFile());
                         }
                 }
                 table.setSelectAction(() -> {

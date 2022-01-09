@@ -1,4 +1,4 @@
-package com.baimamboukar.java.rms.src.models;
+package com.baimamboukar.java.rms.src.ui;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -23,13 +23,13 @@ import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 
-public class PDFBox {
+public class Test {
     final String fileName;
     final String generatedPDF;
     final String desc;
     final String title;
 
-    public PDFBox(String fileName, String generatedPDF, String desc, String title) {
+    public Test(String fileName, String generatedPDF, String desc, String title) {
         this.fileName = fileName;
         this.generatedPDF = generatedPDF;
         this.desc = desc;
@@ -150,5 +150,11 @@ public class PDFBox {
 
     public String getGeneratedPDF() {
         return generatedPDF;
+    }
+
+    public static void main(String[] args) {
+        Test test = new Test("com/baimamboukar/java/rms/ressources/rms.csv", "complete.pdf", "RMS RESULT FROM BOSS",
+                "Fall 2021 RESULTS");
+        System.out.println(test);
     }
 }
