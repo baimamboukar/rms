@@ -31,7 +31,7 @@ public class Twilio {
         // correct password for gmail id
         final String password = "xlmimrnsitabgazm";
 
-        System.out.println("TLSEmail Start");
+        // System.out.println("TLSEmail Start");
         // Get the session object
 
         // Get system properties//
@@ -120,7 +120,7 @@ public class Twilio {
             multipart.addBodyPart(attachmentPart);
             message.setContent(multipart);
             Transport.send(message);
-            System.out.println("Emails delivered successfully...");
+            // System.out.println("Emails delivered successfully...");
         } catch (MessagingException mex) {
             mex.printStackTrace();
         }
