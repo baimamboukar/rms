@@ -37,6 +37,14 @@ public class PDFBox {
             PdfWriter.getInstance(document, new FileOutputStream(generatedPDF));
 
             document.open();
+            document.addTitle("ALPHA RMS");
+            document.addAuthor("ALPHA RMS");
+            document.addCreator("Baimam Boukar");
+            document.addSubject("Exam results");
+            document.left(20);
+            document.right(20);
+            document.top(20);
+            document.bottom(20);
             Font font = FontFactory.getFont(FontFactory.TIMES_ROMAN, 22, BaseColor.GREEN);
             Font textFont = FontFactory.getFont(FontFactory.HELVETICA, 14, BaseColor.DARK_GRAY);
             Chunk chunk = new Chunk(title, font);
@@ -45,15 +53,9 @@ public class PDFBox {
             document.add(p);
             document.add(new Paragraph());
             document.add(intro);
-            document.addAuthor("ALPHA RMS");
-            document.addCreator("Baimam Boukar");
-            document.addSubject("Exam results");
-            document.left(20);
-            document.right(20);
-            document.top(20);
-            document.bottom(20);
+            document.add(new Paragraph("\n \n "));
 
-            PdfPTable table = new PdfPTable(3);
+            PdfPTable table = new PdfPTable(2);
             addTableHeader(table);
 
             List<List<String>> records = new ArrayList<>();
@@ -71,14 +73,18 @@ public class PDFBox {
                 }
                 records.forEach((record) -> {
                     Paragraph paragraph = new Paragraph("", textFont);
+                    Paragraph gparagraph = new Paragraph("", textFont);
                     Font normalFont = FontFactory.getFont(FontFactory.HELVETICA, 14, BaseColor.DARK_GRAY);
 
                     record.forEach((String cell) -> {
                         paragraph.setFont(normalFont);
                         paragraph.setExtraParagraphSpace(12);
-                        Chunk part = new Chunk(cell);
-                        paragraph.add(part);
-                        addRows(table, paragraph);
+                        Chunk mat = new Chunk(record.get(0));
+                        Chunk grad = new Chunk(record.get(1));
+                        paragraph.add(mat);
+                        gparagraph.add(grad);
+
+                        addRows(table, paragraph, gparagraph);
                     });
                 });
 
@@ -106,8 +112,9 @@ public class PDFBox {
                 });
     }
 
-    private void addRows(PdfPTable table, Paragraph data) {
-        table.addCell(data);
+    private void addRows(PdfPTable table, Paragraph mat, Paragraph grad) {
+        table.addCell(mat);
+        table.addCell(grad);
     }
 
     public String getFileName() {
