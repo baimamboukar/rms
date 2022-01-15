@@ -65,7 +65,7 @@ public class ResultGUI {
                 });
 
                 contentPanel.addComponent(courses);
-                contentPanel.addComponent(new Label("Result Description"));
+                contentPanel.addComponent(new Label(" ✅ Result Description"));
                 contentPanel.addComponent(descBox)
                                 .withBorder(Borders.singleLine("Brief description"));
                 contentPanel.addComponent(new Label("clikc to Upload the file"));
@@ -74,9 +74,9 @@ public class ResultGUI {
                         public void run() {
                                 // Twilio.sendMail();
                                 input = new FileDialogBuilder()
-                                                .setTitle("Open File")
-                                                .setDescription("Choose a file")
-                                                .setActionLabel("Open")
+                                                .setTitle("Chose File")
+                                                .setDescription("CHOSE CSV FILE THAT CONTAINS THE RESULT")
+                                                .setActionLabel("select 🎯")
                                                 .build()
                                                 .showDialog(gui);
                                 if (input == null) {
@@ -99,13 +99,13 @@ public class ResultGUI {
                                 }
 
                         }
-                }).withBorder(Borders.doubleLine("--csv only--")));
+                }).withBorder(Borders.doubleLine("⚛⚛..csv only..⚛⚛")));
                 contentPanel.addComponent(
                                 new Separator(Direction.HORIZONTAL)
                                                 .setLayoutData(
                                                                 GridLayout.createHorizontallyFilledLayoutData(
                                                                                 2)));
-                contentPanel.addComponent(new Button("Publish result", new Runnable() {
+                contentPanel.addComponent(new Button("Publish result 📨", new Runnable() {
                         @Override
                         public void run() {
                                 List<Student> students = Database.getStudents("SELECT * FROM students");
@@ -159,12 +159,7 @@ public class ResultGUI {
                                                 .setLayoutData(
                                                                 GridLayout.createHorizontallyFilledLayoutData(
                                                                                 4)));
-                contentPanel.addComponent(
-                                new Label("AVG OF A: "
-                                                + Database.getAVG("SELECT AVG(acount) as average FROM resultsdata"))
-                                                                .setLayoutData(
-                                                                                GridLayout.createHorizontallyFilledLayoutData(
-                                                                                                4)));
+
                 String mean = Database.getTotalAVG();
                 String mode = Database.getMode();
                 String stdev = Database.getStandardDev();
