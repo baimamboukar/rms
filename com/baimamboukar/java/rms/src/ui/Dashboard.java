@@ -141,7 +141,7 @@ public class Dashboard {
                                                                                         GridLayout.Alignment.BEGINNING)));
                         contentPanel.addComponent(new Button(" result ",
                                         () -> MessageDialog.showMessageDialog(textGUI, "MessageBox",
-                                                        "We are still cooking this feature ! ☄☄☄☄☄",
+                                                        "Result can not be updated after it has been sent! ☄☄☄☄☄",
                                                         MessageDialogButton.OK))
                                                                         .withBorder(Borders.singleLine("◂◂update▸▸"))
                                                                         .setLayoutData(GridLayout.createLayoutData(
@@ -210,9 +210,9 @@ public class Dashboard {
                                                                         .withBorder(Borders.singleLine("display")));
 
                         contentPanel.addComponent(
-                                        new Label("፤፤፤፤ CRUD OPERATIONS ፤፤፤፤").addStyle(SGR.ITALIC).addStyle(SGR.BOLD)
+                                        new Label("፤፤፤፤ CRUD OPERATIONS ፤፤፤፤").addStyle(SGR.BOLD)
                                                         .setLabelWidth(100)
-                                                        .setForegroundColor(TextColor.ANSI.GREEN)
+                                                        .setForegroundColor(TextColor.ANSI.RED)
                                                         .setLayoutData(
                                                                         GridLayout.createHorizontallyFilledLayoutData(
                                                                                         4)));
