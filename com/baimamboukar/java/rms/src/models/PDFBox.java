@@ -71,21 +71,15 @@ public class PDFBox {
                 }
                 records.forEach((record) -> {
                     Paragraph paragraph = new Paragraph("", textFont);
-                    try {
-                        Font normalFont = FontFactory.getFont(FontFactory.HELVETICA, 14, BaseColor.DARK_GRAY);
+                    Font normalFont = FontFactory.getFont(FontFactory.HELVETICA, 14, BaseColor.DARK_GRAY);
 
-                        record.forEach((String cell) -> {
-                            Chunk part = new Chunk(cell);
-                            paragraph.add(part);
-                            addRows(table, paragraph);
-                        });
+                    record.forEach((String cell) -> {
                         paragraph.setFont(normalFont);
                         paragraph.setExtraParagraphSpace(12);
-                        document.add(paragraph);
-                    } catch (DocumentException e) {
-                        e.printStackTrace();
-                    }
-                    // System.out.println(record.toString());
+                        Chunk part = new Chunk(cell);
+                        paragraph.add(part);
+                        addRows(table, paragraph);
+                    });
                 });
 
             } catch (Exception e) {
