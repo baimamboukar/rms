@@ -52,7 +52,8 @@ public class ResultGUI {
                                                 .setLayoutData(
                                                                 GridLayout.createHorizontallyFilledLayoutData(
                                                                                 2)));
-                contentPanel.addComponent(new Label("Result's Course").setForegroundColor(TextColor.ANSI.GREEN));
+                contentPanel.addComponent(new Label("≜ RESULT'S COURSE ≜").setForegroundColor(TextColor.ANSI.GREEN)
+                                .addStyle(SGR.BOLD));
 
                 List<Course> coursesList = Database.getCourses("SELECT * FROM courses");
                 ComboBox<String> courses = new ComboBox<String>();
@@ -65,14 +66,16 @@ public class ResultGUI {
                 });
 
                 contentPanel.addComponent(courses);
-                contentPanel.addComponent(new Label(" ✅ Result Description"));
+                contentPanel.addComponent(new Label("≛ RESULT INFOS ≛").setForegroundColor(TextColor.ANSI.MAGENTA)
+                                .addStyle(SGR.BOLD));
                 contentPanel.addComponent(descBox)
                                 .withBorder(Borders.singleLine("Brief description"));
-                contentPanel.addComponent(new Label("clikc to Upload the file"));
+                contentPanel.addComponent(
+                                new Label("⚝ UPLOAD FILE ⚝").setForegroundColor(TextColor.ANSI.CYAN)
+                                                .addStyle(SGR.BOLD));
                 contentPanel.addComponent(new Button("Upload file", new Runnable() {
                         @Override
                         public void run() {
-                                // Twilio.sendMail();
                                 input = new FileDialogBuilder()
                                                 .setTitle("Chose File")
                                                 .setDescription("CHOSE CSV FILE THAT CONTAINS THE RESULT")
@@ -99,13 +102,13 @@ public class ResultGUI {
                                 }
 
                         }
-                }).withBorder(Borders.doubleLine("⚛⚛..csv only..⚛⚛")));
+                }).withBorder(Borders.singleLine("⚛⚛csv only⚛⚛")));
                 contentPanel.addComponent(
                                 new Separator(Direction.HORIZONTAL)
                                                 .setLayoutData(
                                                                 GridLayout.createHorizontallyFilledLayoutData(
                                                                                 2)));
-                contentPanel.addComponent(new Button("Publish result 📨", new Runnable() {
+                contentPanel.addComponent(new Button("Publish result", new Runnable() {
                         @Override
                         public void run() {
                                 List<Student> students = Database.getStudents("SELECT * FROM students");
@@ -227,7 +230,6 @@ public class ResultGUI {
 
         public static Panel deleteResult(Panel back, Window window, WindowBasedTextGUI gui) {
                 Panel contentPanel = new Panel(new GridLayout(4));
-                String mean = Database.getTotalAVG();
 
                 GridLayout gridLayout = (GridLayout) contentPanel.getLayoutManager();
                 gridLayout.setHorizontalSpacing(2);
@@ -240,6 +242,9 @@ public class ResultGUI {
                 /**
                  * STATISTICS BUTTONS
                  */
+                String mean = Database.getTotalAVG();
+                String mode = Database.getMode();
+                String stdev = Database.getStandardDev();
                 contentPanel.addComponent(
                                 new EmptySpace()
 
@@ -252,7 +257,7 @@ public class ResultGUI {
                                 .setForegroundColor(TextColor.ANSI.CYAN).setLayoutData(
                                                 GridLayout.createHorizontallyFilledLayoutData(
                                                                 4)));
-                contentPanel.addComponent(new Button(" MODE: B+ ")
+                contentPanel.addComponent(new Button(" MODE: " + mode + " ")
                                 .setEnabled(false)
                                 .withBorder(Borders.singleLine("⤴⤴⤴⤴⤴")));
                 contentPanel.addComponent(new Button(" MEAN: " + mean + " ").setEnabled(false)
@@ -260,7 +265,7 @@ public class ResultGUI {
                 contentPanel.addComponent(new Button(" MEDIAN: D ")
                                 .setEnabled(false)
                                 .withBorder(Borders.singleLine("⅀≞≞≞⅀")));
-                contentPanel.addComponent(new Button(" STDEV: 0.7 ")
+                contentPanel.addComponent(new Button(" STDEV: " + stdev + " ")
                                 .setEnabled(false)
                                 .withBorder(Borders
                                                 .singleLine("∂∂≜≜≜∂∂")));
