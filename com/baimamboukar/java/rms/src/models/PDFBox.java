@@ -50,10 +50,12 @@ public class PDFBox {
             Chunk chunk = new Chunk(title, font);
             Paragraph p = new Paragraph(chunk);
             Paragraph intro = new Paragraph(desc);
+
             document.add(p);
             document.add(new Paragraph());
+            document.add(new Paragraph("\n "));
             document.add(intro);
-            document.add(new Paragraph("\n \n "));
+            document.add(new Paragraph("\n "));
 
             PdfPTable table = new PdfPTable(2);
             addTableHeader(table);
@@ -75,17 +77,14 @@ public class PDFBox {
                     Paragraph paragraph = new Paragraph("", textFont);
                     Paragraph gparagraph = new Paragraph("", textFont);
                     Font normalFont = FontFactory.getFont(FontFactory.HELVETICA, 14, BaseColor.DARK_GRAY);
+                    paragraph.setFont(normalFont);
+                    paragraph.setExtraParagraphSpace(12);
+                    Chunk mat = new Chunk(record.get(0));
+                    Chunk grad = new Chunk(record.get(1));
+                    paragraph.add(mat);
+                    gparagraph.add(grad);
 
-                    record.forEach((String cell) -> {
-                        paragraph.setFont(normalFont);
-                        paragraph.setExtraParagraphSpace(12);
-                        Chunk mat = new Chunk(record.get(0));
-                        Chunk grad = new Chunk(record.get(1));
-                        paragraph.add(mat);
-                        gparagraph.add(grad);
-
-                        addRows(table, paragraph, gparagraph);
-                    });
+                    addRows(table, paragraph, gparagraph);
                 });
 
             } catch (Exception e) {
