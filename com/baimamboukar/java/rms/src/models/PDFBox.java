@@ -45,6 +45,13 @@ public class PDFBox {
             document.add(p);
             document.add(new Paragraph());
             document.add(intro);
+            document.addAuthor("ALPHA RMS");
+            document.addCreator("Baimam Boukar");
+            document.addSubject("Exam results");
+            document.left(20);
+            document.right(20);
+            document.top(20);
+            document.bottom(20);
 
             PdfPTable table = new PdfPTable(3);
             addTableHeader(table);
