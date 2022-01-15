@@ -3,14 +3,9 @@ package com.baimamboukar.java.rms.src.models;
 import java.io.IOException;
 import java.util.Arrays;
 
-import com.baimamboukar.java.rms.src.ui.CourseGUI;
-import com.baimamboukar.java.rms.src.ui.ResultGUI;
-import com.baimamboukar.java.rms.src.ui.StudentGUI;
-import com.baimamboukar.java.rms.src.ui.TeacherGUI;
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.gui2.BasicWindow;
-import com.googlecode.lanterna.gui2.Borders;
 import com.googlecode.lanterna.gui2.Button;
 import com.googlecode.lanterna.gui2.DefaultWindowManager;
 import com.googlecode.lanterna.gui2.Direction;
@@ -22,8 +17,6 @@ import com.googlecode.lanterna.gui2.Panel;
 import com.googlecode.lanterna.gui2.Separator;
 import com.googlecode.lanterna.gui2.Window;
 import com.googlecode.lanterna.gui2.WindowBasedTextGUI;
-import com.googlecode.lanterna.gui2.dialogs.MessageDialog;
-import com.googlecode.lanterna.gui2.dialogs.MessageDialogButton;
 import com.googlecode.lanterna.screen.Screen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 
