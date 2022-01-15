@@ -16,6 +16,7 @@ import com.baimamboukar.java.rms.src.models.PDFBox;
 import com.baimamboukar.java.rms.src.models.Result;
 import com.baimamboukar.java.rms.src.models.Student;
 import com.baimamboukar.java.rms.src.models.Twilio;
+import com.googlecode.lanterna.SGR;
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.gui2.Borders;
@@ -251,6 +252,8 @@ public class ResultGUI {
                                                                 GridLayout.createHorizontallyFilledLayoutData(
                                                                                 4)));
                 contentPanel.addComponent(new Label("CLICK THE RESULT YOU WANT TO DELETE")
+                                .addStyle(SGR.CIRCLED)
+
                                 .setForegroundColor(TextColor.ANSI.CYAN).setLayoutData(
                                                 GridLayout.createHorizontallyFilledLayoutData(
                                                                 4)));
