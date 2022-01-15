@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -314,16 +315,17 @@ public class Database {
                 + (getAVG("SELECT avg(dcount * dcount) as average FROM resultsdata") * 65)
                 + (getAVG("SELECT avg(fcount * fcount) as average FROM resultsdata") * 60)) / 100;
 
-        double avg = ((getAVG("SELECT avg(acount) as average FROM resultsdata") * 100)
-                + (getAVG("SELECT avg(bpluscount) as average FROM resultsdata") * 90)
-                + (getAVG("SELECT avg(bcount) as average FROM resultsdata") * 85)
-                + (getAVG("SELECT avg(cpluscount) as average FROM resultsdata") * 80)
-                + (getAVG("SELECT avg(ccount) as average FROM resultsdata") * 75)
-                + (getAVG("SELECT avg(dpluscount) as average FROM resultsdata") * 70)
-                + (getAVG("SELECT avg(dcount) as average FROM resultsdata") * 65)
-                + (getAVG("SELECT avg(fcount) as average FROM resultsdata") * 60)) / 100;
-        double variance = (avg_avg - Math.pow(avg, 2)) / total;
-        return String.valueOf(Math.sqrt(variance));
+        double avg = (Math.pow((getAVG("SELECT avg(acount) as average FROM resultsdata") * 100), 2)
+                + Math.pow((getAVG("SELECT avg(bpluscount) as average FROM resultsdata") * 90), 2)
+                + Math.pow((getAVG("SELECT avg(bcount) as average FROM resultsdata") * 85), 2)
+                + Math.pow((getAVG("SELECT avg(cpluscount) as average FROM resultsdata") * 80), 2)
+                + Math.pow((getAVG("SELECT avg(ccount) as average FROM resultsdata") * 75), 2)
+                + Math.pow((getAVG("SELECT avg(dpluscount) as average FROM resultsdata") * 70), 2)
+                + Math.pow((getAVG("SELECT avg(dcount) as average FROM resultsdata") * 65), 2)
+                + Math.pow((getAVG("SELECT avg(fcount) as average FROM resultsdata") * 60), 2)) / 100;
+        double variance = (avg - avg_avg);
+        DecimalFormat df = new DecimalFormat("#.##");
+        return String.valueOf(df.format(Math.sqrt(variance)));
     }
 
     private static String getGradebasedOnScore(int marks) {
