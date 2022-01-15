@@ -71,7 +71,7 @@ public class Dashboard {
                                                                         GridLayout.createHorizontallyFilledLayoutData(
                                                                                         4)));
                         contentPanel.addComponent(
-                                        new Label("፤፤፤፤ DATABASE STATISTICS ፤፤፤፤").addStyle(SGR.ITALIC)
+                                        new Label("፤፤፤፤ RMS DATABASE STATISTICS ፤፤፤፤")
                                                         .setLabelWidth(100)
                                                         .setForegroundColor(TextColor.ANSI.BLACK)
                                                         .setLayoutData(
@@ -101,7 +101,7 @@ public class Dashboard {
                                                                         GridLayout.createHorizontallyFilledLayoutData(
                                                                                         4)));
                         contentPanel.addComponent(
-                                        new EmptySpace(TextColor.ANSI.BLUE)
+                                        new EmptySpace(TextColor.ANSI.CYAN)
 
                                                         .setLayoutData(
                                                                         GridLayout.createHorizontallyFilledLayoutData(
@@ -112,11 +112,18 @@ public class Dashboard {
                                                         .setLayoutData(
                                                                         GridLayout.createHorizontallyFilledLayoutData(
                                                                                         4)));
+
                         contentPanel.addComponent(
-                                        new Label("፤፤፤፤ CRUD OPERATIONS ON RESULT ፤፤፤፤").addStyle(SGR.ITALIC)
+                                        new Label("፤፤፤፤ CRUD OPERATIONS ON RESULT ፤፤፤፤")
                                                         .addStyle(SGR.BOLD)
                                                         .setLabelWidth(100)
-                                                        .setForegroundColor(TextColor.ANSI.GREEN)
+                                                        .setForegroundColor(TextColor.ANSI.CYAN)
+                                                        .setLayoutData(
+                                                                        GridLayout.createHorizontallyFilledLayoutData(
+                                                                                        4)));
+                        contentPanel.addComponent(
+                                        new EmptySpace()
+
                                                         .setLayoutData(
                                                                         GridLayout.createHorizontallyFilledLayoutData(
                                                                                         4)));
@@ -167,6 +174,31 @@ public class Dashboard {
                                                         .setLayoutData(
                                                                         GridLayout.createHorizontallyFilledLayoutData(
                                                                                         4)));
+                        contentPanel.addComponent(
+                                        new EmptySpace(TextColor.ANSI.RED)
+
+                                                        .setLayoutData(
+                                                                        GridLayout.createHorizontallyFilledLayoutData(
+                                                                                        4)));
+                        contentPanel.addComponent(
+                                        new EmptySpace()
+
+                                                        .setLayoutData(
+                                                                        GridLayout.createHorizontallyFilledLayoutData(
+                                                                                        4)));
+                        contentPanel.addComponent(
+                                        new Label("፤፤፤፤ STATISTICAL ANALYSIS ፤፤፤፤").addStyle(SGR.BOLD)
+                                                        .setLabelWidth(100)
+                                                        .setForegroundColor(TextColor.ANSI.RED)
+                                                        .setLayoutData(
+                                                                        GridLayout.createHorizontallyFilledLayoutData(
+                                                                                        4)));
+                        contentPanel.addComponent(
+                                        new EmptySpace()
+
+                                                        .setLayoutData(
+                                                                        GridLayout.createHorizontallyFilledLayoutData(
+                                                                                        4)));
 
                         contentPanel.addComponent(new Button(" MODE: " + mode + " ")
                                         .setEnabled(false)
@@ -176,14 +208,26 @@ public class Dashboard {
                         contentPanel.addComponent(new Button(" MEDIAN: D ")
                                         .setEnabled(false)
                                         .withBorder(Borders.singleLine("⅀≞≞≞⅀")));
-                        contentPanel.addComponent(new Button(" STDEV: " + stdev + " ")
+                        contentPanel.addComponent(new Button(" ∂: " + stdev + " ")
                                         .setEnabled(false)
                                         .withBorder(Borders
                                                         .singleLine("∂∂≜≜≜∂∂")));
+                        contentPanel.addComponent(
+                                        new EmptySpace()
+
+                                                        .setLayoutData(
+                                                                        GridLayout.createHorizontallyFilledLayoutData(
+                                                                                        4)));
 
                         /** ACTION BUTTONS FOR DISPLAY */
                         contentPanel.addComponent(
                                         new EmptySpace(TextColor.ANSI.MAGENTA)
+
+                                                        .setLayoutData(
+                                                                        GridLayout.createHorizontallyFilledLayoutData(
+                                                                                        4)));
+                        contentPanel.addComponent(
+                                        new EmptySpace()
 
                                                         .setLayoutData(
                                                                         GridLayout.createHorizontallyFilledLayoutData(
@@ -209,62 +253,62 @@ public class Dashboard {
                                                                                         GridLayout.Alignment.CENTER))
                                                                         .withBorder(Borders.singleLine("display")));
 
-                        contentPanel.addComponent(
-                                        new Label("፤፤፤፤ CRUD OPERATIONS ፤፤፤፤").addStyle(SGR.BOLD)
-                                                        .setLabelWidth(100)
-                                                        .setForegroundColor(TextColor.ANSI.RED)
-                                                        .setLayoutData(
-                                                                        GridLayout.createHorizontallyFilledLayoutData(
-                                                                                        4)));
-                        contentPanel.addComponent(new Button(" Result ",
-                                        new Runnable() {
-                                                public void run() {
-                                                        window.setComponent(ResultGUI.publishResult(contentPanel,
-                                                                        window, textGUI));
-                                                };
-                                        })
-                                                        .withBorder(Borders.doubleLine("publish"))
-                                                        .setLayoutData(GridLayout.createLayoutData(
-                                                                        GridLayout.Alignment.CENTER,
-                                                                        GridLayout.Alignment.CENTER)));
-                        contentPanel.addComponent(new Button(" Students ",
-                                        () -> MessageDialog.showMessageDialog(textGUI, "MessageBox",
-                                                        "We are still cooking this feature ! ☄☄☄☄☄",
-                                                        MessageDialogButton.OK))
+                        // contentPanel.addComponent(
+                        // new Label("፤፤፤፤ CRUD OPERATIONS ፤፤፤፤").addStyle(SGR.BOLD)
+                        // .setLabelWidth(100)
+                        // .setForegroundColor(TextColor.ANSI.RED)
+                        // .setLayoutData(
+                        // GridLayout.createHorizontallyFilledLayoutData(
+                        // 4)));
+                        // contentPanel.addComponent(new Button(" Result ",
+                        // new Runnable() {
+                        // public void run() {
+                        // window.setComponent(ResultGUI.publishResult(contentPanel,
+                        // window, textGUI));
+                        // };
+                        // })
+                        // .withBorder(Borders.doubleLine("publish"))
+                        // .setLayoutData(GridLayout.createLayoutData(
+                        // GridLayout.Alignment.CENTER,
+                        // GridLayout.Alignment.CENTER)));
+                        // contentPanel.addComponent(new Button(" Students ",
+                        // () -> MessageDialog.showMessageDialog(textGUI, "MessageBox",
+                        // "We are still cooking this feature ! ☄☄☄☄☄",
+                        // MessageDialogButton.OK))
 
-                                                                        .withBorder(Borders.doubleLine("add"))
-                                                                        .setLayoutData(GridLayout.createLayoutData(
-                                                                                        GridLayout.Alignment.END,
-                                                                                        GridLayout.Alignment.BEGINNING)));
-                        contentPanel.addComponent(new Button(" Teacher ",
-                                        () -> MessageDialog.showMessageDialog(textGUI, "MessageBox",
-                                                        "We are still cooking this feature ! ☄☄☄☄☄",
-                                                        MessageDialogButton.OK))
-                                                                        .withBorder(Borders.doubleLine("add"))
-                                                                        .setLayoutData(GridLayout.createLayoutData(
-                                                                                        GridLayout.Alignment.CENTER,
-                                                                                        GridLayout.Alignment.CENTER)));
-                        contentPanel.addComponent(new Button(" Course ",
-                                        () -> MessageDialog.showMessageDialog(textGUI, "MessageBox",
-                                                        "We are still cooking this feature ! ☄☄☄☄☄",
-                                                        MessageDialogButton.OK))
-                                                                        .withBorder(Borders.doubleLine("add"))
-                                                                        .setSize(new TerminalSize(8, 4))
-                                                                        .setLayoutData(GridLayout.createLayoutData(
-                                                                                        GridLayout.Alignment.CENTER,
-                                                                                        GridLayout.Alignment.CENTER)));
+                        // .withBorder(Borders.doubleLine("add"))
+                        // .setLayoutData(GridLayout.createLayoutData(
+                        // GridLayout.Alignment.END,
+                        // GridLayout.Alignment.BEGINNING)));
+                        // contentPanel.addComponent(new Button(" Teacher ",
+                        // () -> MessageDialog.showMessageDialog(textGUI, "MessageBox",
+                        // "We are still cooking this feature ! ☄☄☄☄☄",
+                        // MessageDialogButton.OK))
+                        // .withBorder(Borders.doubleLine("add"))
+                        // .setLayoutData(GridLayout.createLayoutData(
+                        // GridLayout.Alignment.CENTER,
+                        // GridLayout.Alignment.CENTER)));
+                        // contentPanel.addComponent(new Button(" Course ",
+                        // () -> MessageDialog.showMessageDialog(textGUI, "MessageBox",
+                        // "We are still cooking this feature ! ☄☄☄☄☄",
+                        // MessageDialogButton.OK))
+                        // .withBorder(Borders.doubleLine("add"))
+                        // .setSize(new TerminalSize(8, 4))
+                        // .setLayoutData(GridLayout.createLayoutData(
+                        // GridLayout.Alignment.CENTER,
+                        // GridLayout.Alignment.CENTER)));
 
-                        contentPanel.addComponent(
-                                        new EmptySpace()
-                                                        .setLayoutData(
-                                                                        GridLayout.createHorizontallyFilledLayoutData(
-                                                                                        4)));
-                        contentPanel.addComponent(
-                                        new EmptySpace(TextColor.ANSI.RED)
+                        // contentPanel.addComponent(
+                        // new EmptySpace()
+                        // .setLayoutData(
+                        // GridLayout.createHorizontallyFilledLayoutData(
+                        // 4)));
+                        // contentPanel.addComponent(
+                        // new EmptySpace(TextColor.ANSI.RED)
 
-                                                        .setLayoutData(
-                                                                        GridLayout.createHorizontallyFilledLayoutData(
-                                                                                        4)));
+                        // .setLayoutData(
+                        // GridLayout.createHorizontallyFilledLayoutData(
+                        // 4)));
                         contentPanel.addComponent(
                                         new Button("Close", window::close).setLayoutData(
                                                         GridLayout.createHorizontallyEndAlignedLayoutData(4)));
