@@ -52,7 +52,7 @@ public class ResultGUI {
                                                 .setLayoutData(
                                                                 GridLayout.createHorizontallyFilledLayoutData(
                                                                                 2)));
-                contentPanel.addComponent(new Label("Result's Course"));
+                contentPanel.addComponent(new Label("Result's Course").setForegroundColor(TextColor.ANSI.GREEN));
 
                 List<Course> coursesList = Database.getCourses("SELECT * FROM courses");
                 ComboBox<String> courses = new ComboBox<String>();
