@@ -7,4 +7,4 @@
 # jar cvfm baimamboukar.jar MANIFEST.MF class/* rms.sqlite
 cd com/baimamboukar/java/rms
 #javac -cp ./:jars/* -d class/ src/ui/* src/database/* src/models/*
-java -cp jars/* com.baimamboukar.java.rms.src.ui.Dashboard
+java -cp ./:rms.jar:jars/* com.baimamboukar.java.rms.src.ui.Dashboard
