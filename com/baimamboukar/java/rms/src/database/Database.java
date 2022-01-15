@@ -304,6 +304,7 @@ public class Database {
     }
 
     public static String getStandardDev() {
+        int total = getCount("SELECT COUNT(*) FROM resultsdata");
         double avg_avg = ((getAVG("SELECT avg(acount * acount) as average FROM resultsdata") * 100)
                 + (getAVG("SELECT avg(bpluscount * bpluscount) as average FROM resultsdata") * 90)
                 + (getAVG("SELECT avg(bcount * bcount) as average FROM resultsdata") * 85)
@@ -321,7 +322,7 @@ public class Database {
                 + (getAVG("SELECT avg(dpluscount) as average FROM resultsdata") * 70)
                 + (getAVG("SELECT avg(dcount) as average FROM resultsdata") * 65)
                 + (getAVG("SELECT avg(fcount) as average FROM resultsdata") * 60)) / 100;
-        double variance = avg_avg - Math.pow(avg, 2);
+        double variance = (avg_avg - Math.pow(avg, 2)) / total;
         return String.valueOf(Math.sqrt(variance));
     }
 
