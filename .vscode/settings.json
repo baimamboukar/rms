@@ -4,7 +4,11 @@
     "com/baimamboukar/java/rms/jars/sqlite-jdbc-3.36.0.3.jar",
     "com/baimamboukar/java/rms/jars/lanterna-3.2.0-alpha1.jar",
     "com/baimamboukar/java/rms/jars/activation-1.1.1.jar",
-    "com/baimamboukar/java/rms/jars/javax.mail.jar"
+    "com/baimamboukar/java/rms/jars/javax.mail.jar",
+    "com/baimamboukar/java/rms/jars/fontbox-3.0.0-alpha2.jar",
+    "com/baimamboukar/java/rms/jars/pdfbox-3.0.0-alpha2.jar",
+    "com/baimamboukar/java/rms/jars/pdfbox-app-3.0.0-alpha2.jar",
+    "com/baimamboukar/java/rms/jars/itextpdf-5.5.13.2.jar"
   ],
   "sqltools.connections": [
     {
