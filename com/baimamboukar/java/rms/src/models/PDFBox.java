@@ -34,7 +34,7 @@ public class PDFBox {
         // created PDF document instance
         try {
             Document document = new Document();
-            PdfWriter.getInstance(document, new FileOutputStream(generatedPDF));
+            PdfWriter.getInstance(document, new FileOutputStream("ressources/" + generatedPDF));
 
             document.open();
             document.addTitle("ALPHA RMS");
