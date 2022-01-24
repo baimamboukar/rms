@@ -4,7 +4,7 @@
 # javac -d com/baimamboukar/java/rms/class com/baimamboukar/java/rms/*.java
 # javac -d com/baimamboukar/java/rms/class com/baimamboukar/java/rms/database/*.java
 cd com/baimamboukar/java/rms
-jar cvfm baimamboukar.jar MANIFEST.MF class/* rms.sqlite
+jar cvfm baimamboukar.jar MANIFEST.MF com/baimamboukar/java/rms/class/* rms.sqlite
 ls
 #javac -cp ./:jars/* -d class/ src/ui/* src/database/* src/models/*
 java -cp ./:baimamboukar.jar:jars/* com.baimamboukar.java.rms.src.ui.Dashboard
