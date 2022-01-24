@@ -1,4 +1,3 @@
 cd com/baimamboukar/java/rms
 javac -cp ./:jars/* -d class/ src/ui/* src/database/* src/models/*
-ls
-java -cp ./:jars/*:class/* com.baimamboukar.java.rms.src.ui.Dashboard
+#java -cp ./:jars/*:class/* com.baimamboukar.java.rms.src.ui.Dashboard
