@@ -211,7 +211,6 @@ public class Database {
             pstmt.setString(1, date);
             // execute the delete statement
             pstmt.executeUpdate();
-            conn.close();
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
