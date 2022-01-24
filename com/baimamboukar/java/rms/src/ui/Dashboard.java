@@ -252,10 +252,20 @@ public class Dashboard {
                                                                                         GridLayout.Alignment.CENTER,
                                                                                         GridLayout.Alignment.CENTER))
                                                                         .withBorder(Borders.singleLine("display")));
+                        contentPanel.addComponent(
+                                        new Button("Reload", new Runnable() {
 
+                                                @Override
+                                                public void run() {
+                                                        window.setComponent(contentPanel);
+
+                                                }
+
+                                        }).setLayoutData(
+                                                        GridLayout.createHorizontallyEndAlignedLayoutData(2)));
                         contentPanel.addComponent(
                                         new Button("Close", window::close).setLayoutData(
-                                                        GridLayout.createHorizontallyEndAlignedLayoutData(4)));
+                                                        GridLayout.createHorizontallyEndAlignedLayoutData(2)));
 
                         window.setComponent(activPanel);
 
