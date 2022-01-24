@@ -45,11 +45,11 @@ public class Dashboard {
 
                         final WindowBasedTextGUI textGUI = new MultiWindowTextGUI(screen,
                                         new DefaultWindowManager(),
-                                        new EmptySpace(TextColor.ANSI.CYAN_BRIGHT));
+                                        new EmptySpace(TextColor.ANSI.DEFAULT));
 
                         final Window window = new BasicWindow("Admin Dashboard");
-                        window.setFixedSize(new TerminalSize(100, 30));
-                        window.setDecoratedSize(new TerminalSize(4, 12));
+                        // window.setFixedSize(new TerminalSize(100, 80));
+                        window.setDecoratedSize(new TerminalSize(4, 8));
                         window.setHints(Arrays.asList(Window.Hint.CENTERED));
                         contentPanel = new Panel(new GridLayout(4));
                         Panel mainPanel = new Panel(new GridLayout(4));

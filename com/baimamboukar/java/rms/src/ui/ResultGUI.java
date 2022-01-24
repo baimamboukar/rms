@@ -73,7 +73,7 @@ public class ResultGUI {
                 contentPanel.addComponent(
                                 new Label("⚝ UPLOAD FILE ⚝").setForegroundColor(TextColor.ANSI.CYAN)
                                                 .addStyle(SGR.BOLD));
-                contentPanel.addComponent(new Button("Upload file", new Runnable() {
+                contentPanel.addComponent(new Button(" Upload ⇲ ", new Runnable() {
                         @Override
                         public void run() {
                                 input = new FileDialogBuilder()
@@ -102,13 +102,14 @@ public class ResultGUI {
                                 }
 
                         }
-                }).withBorder(Borders.singleLine("⚛⚛csv only⚛⚛")));
+                }).withBorder(Borders.singleLine("CSV")));
                 contentPanel.addComponent(
-                                new Separator(Direction.HORIZONTAL)
+                                new EmptySpace(TextColor.ANSI.BLUE)
+
                                                 .setLayoutData(
                                                                 GridLayout.createHorizontallyFilledLayoutData(
                                                                                 2)));
-                contentPanel.addComponent(new Button("Publish result", new Runnable() {
+                contentPanel.addComponent(new Button(" Publish ↗↗↗ ", new Runnable() {
                         @Override
                         public void run() {
                                 List<Student> students = Database.getStudents("SELECT * FROM students");
@@ -140,7 +141,7 @@ public class ResultGUI {
                                                         message, MessageDialogButton.OK);
                                 }
                         }
-                }).withBorder(Borders.doubleLine("done")).setLayoutData(
+                }).withBorder(Borders.singleLine("done")).setLayoutData(
                                 GridLayout.createHorizontallyEndAlignedLayoutData(
                                                 2)));
 
@@ -175,6 +176,17 @@ public class ResultGUI {
                                                 .setLayoutData(
                                                                 GridLayout.createHorizontallyFilledLayoutData(
                                                                                 4)));
+                contentPanel.addComponent(new Label("❴ RESULTS STATISTICAL ANALYSIS ❵⤵")
+                                .addStyle(SGR.BOLD)
+                                .setForegroundColor(TextColor.ANSI.CYAN).setLayoutData(
+                                                GridLayout.createHorizontallyFilledLayoutData(
+                                                                4)));
+                contentPanel.addComponent(
+                                new EmptySpace()
+
+                                                .setLayoutData(
+                                                                GridLayout.createHorizontallyFilledLayoutData(
+                                                                                4)));
 
                 contentPanel.addComponent(new Button(" MODE: " + mode + " ")
                                 .setEnabled(false)
@@ -188,29 +200,46 @@ public class ResultGUI {
                                 .setEnabled(false)
                                 .withBorder(Borders
                                                 .singleLine("∂∂≜≜≜∂∂")));
-                Table<String> table = new Table<>("Date", "Course", "Description", "File");
+                Table<String> table = new Table<String>("Date", "Course", "Description", "File", "Status");
                 table.withBorder(Borders.doubleLine("."));
 
                 List<Result> courses = Database.getResults("SELECT * FROM results");
                 table.setLayoutData(GridLayout.createHorizontallyFilledLayoutData(4));
+
                 if (courses != null) {
                         for (Result result : courses) {
                                 table.getTableModel().addRow(result.getpublicationDate().substring(0, 10) + " ⤻ ",
                                                 result.getCourseId().substring(0, 8) + "   ",
                                                 result.getDescription().substring(0, 8) + "... ⤻ ",
-                                                result.getResultsFile().substring(0, 8));
+                                                result.getResultsFile().substring(0, 8), "✅");
                         }
                 }
                 table.setSelectAction(() -> {
+                        int index = table.getSelectedRow();
                         MessageDialog.showMessageDialog(gui, "Results description",
-                                        "Date: ICT 1112 \n" +
-                                                        "Desc: 3\n" +
-                                                        "Course: Research Methods\n",
+                                        courses.get(index).toString(),
                                         MessageDialogButton.Close);
                 });
 
                 table.setLayoutData(GridLayout.createHorizontallyFilledLayoutData(
                                 4));
+                contentPanel.addComponent(
+                                new EmptySpace()
+
+                                                .setLayoutData(
+                                                                GridLayout.createHorizontallyFilledLayoutData(
+                                                                                4)));
+                contentPanel.addComponent(new Label("✅ Published Results ⤵")
+                                .addStyle(SGR.BOLD)
+                                .setForegroundColor(TextColor.ANSI.CYAN).setLayoutData(
+                                                GridLayout.createHorizontallyFilledLayoutData(
+                                                                4)));
+                contentPanel.addComponent(
+                                new EmptySpace()
+
+                                                .setLayoutData(
+                                                                GridLayout.createHorizontallyFilledLayoutData(
+                                                                                4)));
                 contentPanel.addComponent(table);
                 contentPanel.addComponent(
                                 new Separator(Direction.HORIZONTAL)
@@ -251,12 +280,24 @@ public class ResultGUI {
                                                 .setLayoutData(
                                                                 GridLayout.createHorizontallyFilledLayoutData(
                                                                                 4)));
-                contentPanel.addComponent(new Label("CLICK THE RESULT YOU WANT TO DELETE")
-                                .addStyle(SGR.CIRCLED)
-
+                contentPanel.addComponent(new Label("Click on the result you want to delete ⤵")
+                                .addStyle(SGR.BOLD)
                                 .setForegroundColor(TextColor.ANSI.CYAN).setLayoutData(
                                                 GridLayout.createHorizontallyFilledLayoutData(
                                                                 4)));
+                contentPanel.addComponent(
+                                new EmptySpace()
+
+                                                .setLayoutData(
+                                                                GridLayout.createHorizontallyFilledLayoutData(
+                                                                                4)));
+                contentPanel.addComponent(
+                                new EmptySpace()
+
+                                                .setLayoutData(
+                                                                GridLayout.createHorizontallyFilledLayoutData(
+                                                                                4)));
+
                 contentPanel.addComponent(new Button(" MODE: " + mode + " ")
                                 .setEnabled(false)
                                 .withBorder(Borders.singleLine("⤴⤴⤴⤴⤴")));
@@ -271,7 +312,8 @@ public class ResultGUI {
                                                 .singleLine("∂∂≜≜≜∂∂")));
 
                 ;
-                Table<String> table = new Table<>("Date", "Course", "Description", "File");
+
+                Table<String> table = new Table<String>("Date", "Course", "Description", "File");
                 table.withBorder(Borders.doubleLine("."));
 
                 List<Result> courses = Database.getResults("SELECT * FROM results");
@@ -284,6 +326,12 @@ public class ResultGUI {
                                                 result.getResultsFile().substring(0, 8));
                         }
                 }
+                contentPanel.addComponent(
+                                new EmptySpace(TextColor.ANSI.CYAN)
+
+                                                .setLayoutData(
+                                                                GridLayout.createHorizontallyFilledLayoutData(
+                                                                                4)));
 
                 table.setSelectAction(() -> {
                         Database.deleteResult(courses.get(table.getSelectedRow()).getpublicationDate());
@@ -296,9 +344,28 @@ public class ResultGUI {
 
                 table.setLayoutData(GridLayout.createHorizontallyFilledLayoutData(
                                 4));
+                contentPanel.addComponent(
+                                new EmptySpace()
+
+                                                .setLayoutData(
+                                                                GridLayout.createHorizontallyFilledLayoutData(
+                                                                                4)));
                 contentPanel.addComponent(table);
                 contentPanel.addComponent(
-                                new Separator(Direction.HORIZONTAL)
+                                new EmptySpace()
+
+                                                .setLayoutData(
+                                                                GridLayout.createHorizontallyFilledLayoutData(
+                                                                                4)));
+                contentPanel.addComponent(
+                                new EmptySpace(TextColor.ANSI.CYAN)
+
+                                                .setLayoutData(
+                                                                GridLayout.createHorizontallyFilledLayoutData(
+                                                                                4)));
+                contentPanel.addComponent(
+                                new EmptySpace()
+
                                                 .setLayoutData(
                                                                 GridLayout.createHorizontallyFilledLayoutData(
                                                                                 4)));
