@@ -121,6 +121,6 @@ public class PDFBox {
     }
 
     public String getGeneratedPDF() {
-        return generatedPDF;
+        return "ressources/" + generatedPDF;
     }
 }
