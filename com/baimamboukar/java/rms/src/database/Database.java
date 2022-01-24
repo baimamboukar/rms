@@ -304,7 +304,7 @@ public class Database {
     }
 
     public static String getStandardDev() {
-        int total = getCount("SELECT COUNT(*) FROM resultsdata");
+        // int total = getCount("SELECT COUNT(*) FROM resultsdata");
         double avg_avg = ((getAVG("SELECT avg(acount * acount) as average FROM resultsdata") * 100)
                 + (getAVG("SELECT avg(bpluscount * bpluscount) as average FROM resultsdata") * 90)
                 + (getAVG("SELECT avg(bcount * bcount) as average FROM resultsdata") * 85)
