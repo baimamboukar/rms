@@ -26,7 +26,7 @@ public class Database {
         if (connexion == null) {
             try {
                 // db parameters
-                String url = "jdbc:sqlite:ressources/rms.sqlite";
+                String url = "jdbc:sqlite:rms.sqlite";
                 // create a connection to the database
                 connexion = DriverManager.getConnection(url);
 
