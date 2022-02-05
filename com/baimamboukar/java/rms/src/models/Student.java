@@ -1,3 +1,20 @@
+/*
+ 📌📌📌 THE ICT UNIVERSITY, FALL 20201 📌📌📌
+
+ 🚩 ♨♨♨♨♨ JAVA PROGRAMMING I ♨♨♨♨♨ 🚩
+
+ 🚩 INSTRUCTOR: ENGR. Daniel Moune
+
+ 📌﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋📌
+
+ 🎯 NAMES: BAIMAM BOUKAR JEAN JACQUES
+ 🎯 EMAIL: baimam.jeanjacque@ictuniversity.edu.cm
+ 🎯 WHATSAPP: (+237) 690535759
+ 🎯 TWITTER: @baimamjj
+ 🎯 LINKEDIN: linkedin.com/in/baimamboukar
+ 🎯 WEBSITE: www.baimamboukar.me
+ */
+
 package com.baimamboukar.java.rms.src.models;
 
 import java.util.List;

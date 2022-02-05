@@ -1,3 +1,20 @@
+/*
+ 📌📌📌 THE ICT UNIVERSITY, FALL 20201 📌📌📌
+
+ 🚩 ♨♨♨♨♨ JAVA PROGRAMMING I ♨♨♨♨♨ 🚩
+
+ 🚩 INSTRUCTOR: ENGR. Daniel Moune
+
+ 📌﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋📌
+
+ 🎯 NAMES: BAIMAM BOUKAR JEAN JACQUES
+ 🎯 EMAIL: baimam.jeanjacque@ictuniversity.edu.cm
+ 🎯 WHATSAPP: (+237) 690535759
+ 🎯 TWITTER: @baimamjj
+ 🎯 LINKEDIN: linkedin.com/in/baimamboukar
+ 🎯 WEBSITE: www.baimamboukar.me
+ */
+
 package com.baimamboukar.java.rms.src.models;
 
 import java.io.File;
@@ -68,28 +85,6 @@ public class Twilio {
         try
 
         {
-            // // javax.mail.internet.MimeMessage class is mostly
-            // // used for abstraction.
-            // MimeMessage message = new MimeMessage(session);
-
-            // // header field of the header.
-            // message.setFrom(new InternetAddress(from));
-
-            // for (String email : receivers) {
-            // message.addRecipient(Message.RecipientType.TO,
-            // new InternetAddress(email));
-            // }
-            // MimeBodyPart attachmentBodyPart = new MimeBodyPart();
-            // DataSource source = new FileDataSource(attachment);
-            // attachmentBodyPart.setDataHandler(new DataHandler(source));
-            // attachmentBodyPart.setFileName(attachment);
-
-            // message.setSubject(subject);
-            // message.setText(content);
-            // message.
-
-            // // Send message
-            // Transport.send(message);
 
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress(from));
