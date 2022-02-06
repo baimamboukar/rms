@@ -9,7 +9,7 @@
 
  🎯 NAMES: BAIMAM BOUKAR JEAN JACQUES
  🎯 EMAIL: baimam.jeanjacque@ictuniversity.edu.cm
- 🎯 WHATSAPP: (+237) 690535759
+ 🎯 WHATSAPP: (+237) 690535759.
  🎯 TWITTER: @baimamjj
  🎯 LINKEDIN: linkedin.com/in/baimamboukar
  🎯 WEBSITE: www.baimamboukar.me
