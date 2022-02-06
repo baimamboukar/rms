@@ -122,8 +122,6 @@ public class Twilio {
     }
 
     public static void main(String[] args) {
-        // list of doctors specialities
-        List<String> doctors = new ArrayList<>();
 
     }
 }
