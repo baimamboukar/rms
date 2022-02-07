@@ -72,7 +72,7 @@ public class ResultGUI {
          * 
          */
         static File input;
-        
+
         public static Panel publishResult(Panel prev, Window window, WindowBasedTextGUI gui) {
                 window.setHints(Arrays.asList(Window.Hint.CENTERED));
                 Panel contentPanel = new Panel(new GridLayout(2));
