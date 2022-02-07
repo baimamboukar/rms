@@ -33,6 +33,13 @@ import com.googlecode.lanterna.gui2.dialogs.MessageDialogButton;
 import com.googlecode.lanterna.gui2.table.Table;
 
 public class TeacherGUI {
+        
+        /** 
+         * @param back
+         * @param window
+         * @param gui
+         * @return Panel
+         */
         /*
          * 🎯🎯🎯 RESULTS GUI CLASS 🎯🎯🎯
          * This class contains lanterna code that show how the data related teachers are
