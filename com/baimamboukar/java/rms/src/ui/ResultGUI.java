@@ -56,8 +56,23 @@ import com.googlecode.lanterna.gui2.dialogs.MessageDialogButton;
 import com.googlecode.lanterna.gui2.table.Table;
 
 public class ResultGUI {
+        /*
+         * 🎯🎯🎯 RESULTS GUI CLASS 🎯🎯🎯
+         * This class contains lanterna code that show how the data related results are
+         * represented in
+         * the application
+         * 
+         * @author: BAIMAM BOUKAR JEAN JACQUES
+         * 
+         * @version: 1.0
+         * 
+         * @since: First Release
+         * 
+         * @apinote: Lanterna Library used
+         * 
+         */
         static File input;
-
+        
         public static Panel publishResult(Panel prev, Window window, WindowBasedTextGUI gui) {
                 window.setHints(Arrays.asList(Window.Hint.CENTERED));
                 Panel contentPanel = new Panel(new GridLayout(2));
