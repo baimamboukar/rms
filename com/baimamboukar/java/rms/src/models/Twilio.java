@@ -25,7 +25,19 @@ import javax.mail.*;
 import javax.mail.internet.*;
 
 public class Twilio {
-
+    /*
+     * 🎯🎯🎯 RESULT CLASS 🎯🎯🎯
+     * This class basically sends email using the Gmail STMP server
+     * 
+     * @author: BAIMAM BOUKAR JEAN JACQUES
+     * 
+     * @version: 1.0
+     * 
+     * @since: First Release
+     * 
+     * @apinote: Javax and Activationx libraries used
+     * 
+     */
     final String subject;
     final String content;
     final File attachment;
