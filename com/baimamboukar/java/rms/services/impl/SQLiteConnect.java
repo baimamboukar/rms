@@ -38,12 +38,20 @@ public class SQLiteConnect implements SQLiteConnectInterface {
 
     }
 
+    
+    /** 
+     * @return List<String>
+     */
     @Override
     public List<String> execute() {
 
         return null;
     }
 
+    
+    /** 
+     * @param args
+     */
     public void main(String[] args) {
         SQLiteConnect sqlite = new SQLiteConnect();
         sqlite.connect();
