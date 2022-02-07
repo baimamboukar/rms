@@ -76,34 +76,66 @@ public class ResultData {
         return acount;
     }
 
+    
+    /** 
+     * @return String
+     */
     public String getBcount() {
         return bcount;
     }
 
+    
+    /** 
+     * @return String
+     */
     public String getCcount() {
         return ccount;
     }
 
+    
+    /** 
+     * @return String
+     */
     public String getDcount() {
         return dcount;
     }
 
+    
+    /** 
+     * @return String
+     */
     public String getFcount() {
         return fcount;
     }
 
+    
+    /** 
+     * @return String
+     */
     public String getBpluscount() {
         return bpluscount;
     }
 
+    
+    /** 
+     * @return String
+     */
     public String getCpluscount() {
         return cpluscount;
     }
 
+    
+    /** 
+     * @return String
+     */
     public String getDpluscount() {
         return dpluscount;
     }
 
+    
+    /** 
+     * @return String
+     */
     @Override
     public String toString() {
         return "ResultData [acount=" + acount + ", bcount=" + bcount + ", bpluscount=" + bpluscount + ", ccount="
