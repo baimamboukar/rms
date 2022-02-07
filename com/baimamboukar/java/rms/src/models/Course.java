@@ -42,30 +42,51 @@ public class Course {
         this.courseName = courseName;
     }
 
+    /**
+     * @return String
+     */
     public String getCourseID() {
         return courseID;
     }
 
+    /**
+     * @param courseID
+     */
     public void setCourseID(String courseID) {
         this.courseID = courseID;
     }
 
+    /**
+     * @return String
+     */
     public String getTeacherID() {
         return teacherID;
     }
 
+    /**
+     * @param teacherID
+     */
     public void setTeacherID(String teacherID) {
         this.teacherID = teacherID;
     }
 
+    /**
+     * @return String
+     */
     public String getCourseName() {
         return courseName;
     }
 
+    /**
+     * @param courseName
+     */
     public void setCourseName(String courseName) {
         this.courseName = courseName;
     }
 
+    /**
+     * @return String
+     */
     @Override
     public String toString() {
         return "Course [courseID=" + courseID + ", courseName=" + courseName + ", teacherID=" + teacherID + "]";
