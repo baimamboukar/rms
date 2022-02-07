@@ -18,6 +18,20 @@
 package com.baimamboukar.java.rms.src.models;
 
 public class Parent {
+    /*
+     * 🎯🎯🎯 PDFBOX 🎯🎯🎯
+     * This class is a model class for Parent. It has the daata attributes, getters
+     * and setters
+     * 
+     * @author: BAIMAM BOUKAR JEAN JACQUES
+     * 
+     * @version: 1.0
+     * 
+     * @since: First Release
+     * 
+     * @apinote: PDFBox and iTEXTPDF libraries used
+     * 
+     */
     private String parentsID;
     private String name;
     private String phone;
