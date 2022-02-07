@@ -18,12 +18,40 @@
 package com.baimamboukar.java.rms.src.models;
 
 public class ResultData {
+    /*
+     * 🎯🎯🎯 RESULT DATA CLASS 🎯🎯🎯
+     * Thuis class contains the statistic data related to a result
+     * And also the corresponding getters and setters
+     * 
+     * @author: BAIMAMBOUKAR
+     * 
+     * @version: 1.0
+     * 
+     * @since: First Release
+     * 
+     */
     private final String acount;
     private final String bcount;
     private final String ccount;
     private final String dcount;
     private final String fcount;
 
+    /**
+     * 🚩🚩🚩 CONSTRUCTOR 🚩🚩🚩
+     * This method is the constructor of the class result.
+     * It is called when a new object of type result is created.
+     * 
+     * @author Baimam Boukar JJ
+     * @since FIRST RELEASE
+     * @param acount
+     * @param bcount
+     * @param ccount
+     * @param dcount
+     * @param fcount
+     * @param bpluscount
+     * @param cpluscount
+     * @param dpluscount
+     */
     public ResultData(String acount, String bcount, String ccount, String dcount, String fcount, String bpluscount,
             String cpluscount, String dpluscount) {
         this.acount = acount;
@@ -40,6 +68,10 @@ public class ResultData {
     private final String cpluscount;
     private final String dpluscount;
 
+    /**
+     * 🚩🚩🚩 GETTERS AND SETTERS 🚩🚩🚩
+     * These are the getters and setters of the class result
+     */
     public String getAcount() {
         return acount;
     }
