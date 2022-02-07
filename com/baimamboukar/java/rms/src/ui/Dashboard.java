@@ -64,6 +64,10 @@ public class Dashboard {
         static int coursesCount = Database.getCount("SELECT COUNT(*) as count FROM courses");
         static int resultsCount = Database.getCount("SELECT COUNT(*) as count FROM results");
 
+        
+        /** 
+         * @param args
+         */
         public static void main(String[] args) {
 
                 DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory();
@@ -317,6 +321,10 @@ public class Dashboard {
                 }
         }
 
+        
+        /** 
+         * @return Panel
+         */
         public static Panel getPanel() {
                 return contentPanel;
         }
