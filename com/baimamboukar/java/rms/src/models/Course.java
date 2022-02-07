@@ -18,6 +18,20 @@
 package com.baimamboukar.java.rms.src.models;
 
 public class Course {
+    /*
+     * 🎯🎯🎯 COURSE CLASS 🎯🎯🎯
+     * This class is a model class for course. It has the daata attributes, getters
+     * and setters
+     * 
+     * @author: BAIMAM BOUKAR JEAN JACQUES
+     * 
+     * @version: 1.0
+     * 
+     * @since: First Release
+     * 
+     * @apinote: PDFBox and iTEXTPDF libraries used
+     * 
+     */
     private String courseID;
     private String teacherID;
     private String courseName;
