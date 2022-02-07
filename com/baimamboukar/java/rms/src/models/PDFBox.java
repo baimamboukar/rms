@@ -37,6 +37,19 @@ import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 
 public class PDFBox {
+    /*
+     * 🎯🎯🎯 PDFBOX 🎯🎯🎯
+     * This class is used to generate a pdf file based on a provided csv file
+     * 
+     * @author: BAIMAM BOUKAR JEAN JACQUES
+     * 
+     * @version: 1.0
+     * 
+     * @since: First Release
+     * 
+     * @apinote: PDFBox and iTEXTPDF libraries used
+     * 
+     */
     final String fileName;
     final String generatedPDF;
     final String desc;
