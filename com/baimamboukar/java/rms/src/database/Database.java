@@ -39,6 +39,10 @@ public class Database {
 
     protected static Connection connexion = null;
 
+    
+    /** 
+     * @return Connection
+     */
     public static Connection connect() {
         if (connexion == null) {
             try {
@@ -58,6 +62,11 @@ public class Database {
         }
     }
 
+    
+    /** 
+     * @param query
+     * @return boolean
+     */
     public static boolean insertResult(String query) {
 
         try {
@@ -73,6 +82,11 @@ public class Database {
 
     }
 
+    
+    /** 
+     * @param query
+     * @return List<Student>
+     */
     public static List<Student> getStudents(String query) {
         List<Student> list = new ArrayList<Student>();
         try {
@@ -94,6 +108,11 @@ public class Database {
         return list;
     }
 
+    
+    /** 
+     * @param query
+     * @return List<Course>
+     */
     public static List<Course> getCourses(String query) {
         List<Course> list = new ArrayList<Course>();
         try {
@@ -114,6 +133,11 @@ public class Database {
         return list;
     }
 
+    
+    /** 
+     * @param query
+     * @return List<Teacher>
+     */
     public static List<Teacher> getTeachers(String query) {
         List<Teacher> list = new ArrayList<Teacher>();
         try {
@@ -134,6 +158,11 @@ public class Database {
         return list;
     }
 
+    
+    /** 
+     * @param query
+     * @return int
+     */
     public static int getCount(String query) {
         int count = 0;
         try {
@@ -150,6 +179,14 @@ public class Database {
         return count;
     }
 
+    
+    /** 
+     * @param date
+     * @param course
+     * @param publisher
+     * @param desc
+     * @param file
+     */
     public static void resultInsert(String date, String course, String publisher, String desc, String file) {
         String sql = "INSERT INTO results(publicationDate, course, publisher, desc, file) VALUES(?, ?, ?, ?, ?)";
 
@@ -166,6 +203,11 @@ public class Database {
         }
     }
 
+    
+    /** 
+     * @param query
+     * @return List<Result>
+     */
     public static List<Result> getResults(String query) {
         List<Result> list = new ArrayList<Result>();
         try {
@@ -186,6 +228,11 @@ public class Database {
         return list;
     }
 
+    
+    /** 
+     * @param query
+     * @return List<ResultData>
+     */
     public static List<ResultData> getResultsData(String query) {
         List<ResultData> list = new ArrayList<ResultData>();
         try {
@@ -218,6 +265,10 @@ public class Database {
         return list;
     }
 
+    
+    /** 
+     * @param date
+     */
     public static void deleteResult(String date) {
         String sql = "DELETE FROM results WHERE publicationDate = ?";
 
@@ -251,6 +302,11 @@ public class Database {
         return avg;
     }
 
+    
+    /** 
+     * @param query
+     * @return int
+     */
     public static int getSUM(String query) {
         int total = 0;
         try {
@@ -267,6 +323,10 @@ public class Database {
         return total;
     }
 
+    
+    /** 
+     * @return String
+     */
     public static String getMode() {
         int amode = getSUM("SELECT SUM(acount) as total FROM resultsdata");
         int bmode = getSUM("SELECT SUM(bcount) as total FROM resultsdata");
@@ -308,6 +368,10 @@ public class Database {
         return modeClass;
     }
 
+    
+    /** 
+     * @return String
+     */
     public static String getTotalAVG() {
         int avg = ((getAVG("SELECT avg(acount) as average FROM resultsdata") * 100)
                 + (getAVG("SELECT avg(bpluscount) as average FROM resultsdata") * 90)
@@ -320,6 +384,10 @@ public class Database {
         return getGradebasedOnScore(avg);
     }
 
+    
+    /** 
+     * @return String
+     */
     public static String getStandardDev() {
         // int total = getCount("SELECT COUNT(*) FROM resultsdata");
         double avg_avg = ((getAVG("SELECT avg(acount * acount) as average FROM resultsdata") * 100)
@@ -344,6 +412,11 @@ public class Database {
         return String.valueOf(df.format(Math.sqrt(variance)));
     }
 
+    
+    /** 
+     * @param marks
+     * @return String
+     */
     private static String getGradebasedOnScore(int marks) {
         // Handling the case when a user enter a negative value of marks
         if (marks < 0) {
