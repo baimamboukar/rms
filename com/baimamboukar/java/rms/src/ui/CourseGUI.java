@@ -33,6 +33,13 @@ import com.googlecode.lanterna.gui2.dialogs.MessageDialogButton;
 import com.googlecode.lanterna.gui2.table.Table;
 
 public class CourseGUI {
+        
+        /** 
+         * @param back
+         * @param window
+         * @param gui
+         * @return Panel
+         */
         public static Panel displayCourses(Panel back, Window window, WindowBasedTextGUI gui) {
                 Panel contentPanel = new Panel(new GridLayout(4));
                 GridLayout gridLayout = (GridLayout) contentPanel.getLayoutManager();
