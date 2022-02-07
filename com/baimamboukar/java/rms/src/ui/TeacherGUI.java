@@ -33,6 +33,21 @@ import com.googlecode.lanterna.gui2.dialogs.MessageDialogButton;
 import com.googlecode.lanterna.gui2.table.Table;
 
 public class TeacherGUI {
+        /*
+         * 🎯🎯🎯 RESULTS GUI CLASS 🎯🎯🎯
+         * This class contains lanterna code that show how the data related teachers are
+         * represented in
+         * the application
+         * 
+         * @author: BAIMAM BOUKAR JEAN JACQUES
+         * 
+         * @version: 1.0
+         * 
+         * @since: First Release
+         * 
+         * @apinote: Lanterna Library used
+         * 
+         */
         public static Panel displayteachers(Panel back, Window window, WindowBasedTextGUI gui) {
                 Panel contentPanel = new Panel(new GridLayout(4));
                 GridLayout gridLayout = (GridLayout) contentPanel.getLayoutManager();
