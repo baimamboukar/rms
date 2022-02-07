@@ -130,6 +130,10 @@ public class PDFBox {
         }
     }
 
+    
+    /** 
+     * @param table
+     */
     private void addTableHeader(PdfPTable table) {
         Stream.of("📌 MATRICULE", "📊 GRADE")
                 .forEach(columnTitle -> {
@@ -141,15 +145,29 @@ public class PDFBox {
                 });
     }
 
+    
+    /** 
+     * @param table
+     * @param mat
+     * @param grad
+     */
     private void addRows(PdfPTable table, Paragraph mat, Paragraph grad) {
         table.addCell(mat);
         table.addCell(grad);
     }
 
+    
+    /** 
+     * @return String
+     */
     public String getFileName() {
         return fileName;
     }
 
+    
+    /** 
+     * @return String
+     */
     public String getGeneratedPDF() {
         return "ressources/" + generatedPDF;
     }
