@@ -41,6 +41,22 @@ import com.googlecode.lanterna.screen.Screen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 
 public class Dashboard {
+        /*
+         * 🎯🎯🎯 DASHBOARD GUI CLASS 🎯🎯🎯
+         * This class contains lanterna code that show how the data related all the
+         * classes are
+         * represented in
+         * the application
+         * 
+         * @author: BAIMAM BOUKAR JEAN JACQUES
+         * 
+         * @version: 1.0
+         * 
+         * @since: First Release
+         * 
+         * @apinote: Lanterna Library used
+         * 
+         */
         static Panel contentPanel;
         static int studentsCount = Database.getCount("SELECT COUNT(*) as count FROM students");
 
