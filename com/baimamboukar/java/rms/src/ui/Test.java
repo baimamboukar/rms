@@ -152,9 +152,5 @@ public class Test {
         return generatedPDF;
     }
 
-    public static void main(String[] args) {
-        Test test = new Test("com/baimamboukar/java/rms/ressources/rms.csv", "complete.pdf", "RMS RESULT FROM BOSS",
-                "Fall 2021 RESULTS");
-        System.out.println(test);
-    }
+  
 }
