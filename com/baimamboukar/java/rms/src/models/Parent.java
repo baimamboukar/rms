@@ -44,38 +44,74 @@ public class Parent {
         this.email = email;
     }
 
+    
+    /** 
+     * @return String
+     */
     public String getParentsID() {
         return parentsID;
     }
 
+    
+    /** 
+     * @param parentsID
+     */
     public void setParentsID(String parentsID) {
         this.parentsID = parentsID;
     }
 
+    
+    /** 
+     * @return String
+     */
     public String getName() {
         return name;
     }
 
+    
+    /** 
+     * @param name
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    
+    /** 
+     * @return String
+     */
     public String getPhone() {
         return phone;
     }
 
+    
+    /** 
+     * @param phone
+     */
     public void setPhone(String phone) {
         this.phone = phone;
     }
 
+    
+    /** 
+     * @return String
+     */
     public String getEmail() {
         return email;
     }
 
+    
+    /** 
+     * @param email
+     */
     public void setEmail(String email) {
         this.email = email;
     }
 
+    
+    /** 
+     * @return String
+     */
     @Override
     public String toString() {
         return "Parent [email=" + email + ", name=" + name + ", parentsID=" + parentsID + ", phone=" + phone + "]";
