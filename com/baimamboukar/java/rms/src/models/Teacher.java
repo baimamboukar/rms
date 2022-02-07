@@ -50,43 +50,83 @@ public class Teacher {
         this.email = email;
     }
 
+    
+    /** 
+     * @return int
+     */
     public int getId() {
         return id;
     }
 
+    
+    /** 
+     * @param id
+     */
     public void setId(int id) {
         this.id = id;
     }
 
+    
+    /** 
+     * @return String
+     */
     public String getNames() {
         return names;
     }
 
+    
+    /** 
+     * @param names
+     */
     public void setNames(String names) {
         this.names = names;
     }
 
+    
+    /** 
+     * @return int
+     */
     public int getCourseID() {
         return courseID;
     }
 
+    
+    /** 
+     * @param courseID
+     */
     public void setCourseID(int courseID) {
         this.courseID = courseID;
     }
 
+    
+    /** 
+     * @return String
+     */
     @Override
     public String toString() {
         return "Teacher [courseID =" + courseID + ", id =" + id + ", names =" + names + "]";
     }
 
+    
+    /** 
+     * @return String
+     */
     public String getEmail() {
         return email;
     }
 
+    
+    /** 
+     * @param email
+     */
     public void setEmail(String email) {
         this.email = email;
     }
 
+    
+    /** 
+     * @param args
+     */
     public static void main(String[] args) {
         Teacher teacher = new Teacher(1, "Magic teacher", 4, "magic@teacher.cm");
         DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory();
