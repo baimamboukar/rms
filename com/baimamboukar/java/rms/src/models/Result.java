@@ -18,12 +18,39 @@
 package com.baimamboukar.java.rms.src.models;
 
 public class Result {
+    /*
+     * 🎯🎯🎯 RESULT CLASS 🎯🎯🎯
+     * This class is a model class for Results. It contains all the attributes of a
+     * Result.
+     * And also the corresponding getters and setters
+     * 
+     * @author: BAIMAMBOUKAR
+     * 
+     * @version: 1.0
+     * 
+     * @since: First Release
+     * 
+     */
+
     private String publicationDate;
     private String courseId;
     private String publisherId;
     private String description;
     private String resultsFile;
 
+    /**
+     * 🚩🚩🚩 CONSTRUCTOR 🚩🚩🚩
+     * This method is the constructor of the class result.
+     * It is called when a new object of type result is created.
+     * 
+     * @author Baimam Boukar JJ
+     * @since FIRST RELEASE
+     * @param publicationDate
+     * @param courseId
+     * @param publisherId
+     * @param description
+     * @param resultsFile
+     */
     public Result(String publicationDate, String courseId, String publisherId, String description,
             String resultsFile) {
         this.publicationDate = publicationDate;
@@ -32,6 +59,11 @@ public class Result {
         this.description = description;
         this.resultsFile = resultsFile;
     }
+
+    /**
+     * 🚩🚩🚩 GETTERS AND SETTERS 🚩🚩🚩
+     * These are the getters and setters of the class result
+     */
 
     public String getpublicationDate() {
         return publicationDate;
