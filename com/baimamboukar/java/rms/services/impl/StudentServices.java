@@ -9,6 +9,12 @@ public class StudentServices implements StudentServicesInterface {
 
     }
 
+    
+    /** 
+     * @param title
+     * @param motif
+     * @param message
+     */
     @Override
     public void sendReport(String title, String motif, String message) {
     }
