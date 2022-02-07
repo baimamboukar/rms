@@ -1,5 +1,4 @@
- #cd com/baimamboukar/java/rms/class
- cd javadocs
+cd javadocs
 # ls
 for file in * 
     do
