@@ -69,26 +69,50 @@ public class Result {
         return publicationDate;
     }
 
+    
+    /** 
+     * @param publicationDate
+     */
     public void setpublicationDate(String publicationDate) {
         this.publicationDate = publicationDate;
     }
 
+    
+    /** 
+     * @return String
+     */
     public String getCourseId() {
         return courseId;
     }
 
+    
+    /** 
+     * @param courseId
+     */
     public void setCourseId(String courseId) {
         this.courseId = courseId;
     }
 
+    
+    /** 
+     * @return String
+     */
     public String getPublisherId() {
         return publisherId;
     }
 
+    
+    /** 
+     * @param publisherId
+     */
     public void setPublisherId(String publisherId) {
         this.publisherId = publisherId;
     }
 
+    
+    /** 
+     * @return String
+     */
     @Override
     public String toString() {
         return "Result [courseId=" + courseId + ", publicationDate=" + publicationDate + ", publisherId="
@@ -96,18 +120,34 @@ public class Result {
                 + "]";
     }
 
+    
+    /** 
+     * @return String
+     */
     public String getDescription() {
         return description;
     }
 
+    
+    /** 
+     * @param description
+     */
     public void setDescription(String description) {
         this.description = description;
     }
 
+    
+    /** 
+     * @return String
+     */
     public String getResultsFile() {
         return resultsFile;
     }
 
+    
+    /** 
+     * @param resultsFile
+     */
     public void setResultsFile(String resultsFile) {
         this.resultsFile = resultsFile;
     }
